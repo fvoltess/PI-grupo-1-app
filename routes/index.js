@@ -4,6 +4,7 @@ const indexController = require("../controllers/indexController");
 
 /* GET home page. */
 router.get("/", indexController.index);
+
 router.get("/index.ejs", indexController.index);
 
 router.get("/login.ejs", indexController.login);
