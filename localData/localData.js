@@ -6,125 +6,135 @@ const localData = {
     },
     productos: [
         {
-            nombre: "Nissan XTrail",
-            imagen: "",
-            descripcion: "SUV versátil y familiar, con amplio espacio interior y buen rendimiento en ciudad y ruta.",
+            nombre: "Pizza Napolitana",
+            id: 1,
+            imagen: "images/products/pizzaNapolitana.jpg",
+            descripcion: "Clásica pizza italiana con tomate, mozzarella fresca y albahaca.",
             comentarios: [
                 {
-                    nombreUsuario: "Mariana López",
-                    texto: "Muy cómoda para viajes largos, el baúl es enorme.",
-                    imagenUsuario: ""
-                }
-        ]
-        }, 
-        {
-            nombre: "Toyota Corolla Cross",
-            imagen: "",
-            descripcion: "SUV mediano con la confiabilidad del Corolla, excelente consumo y seguridad.",
-            comentarios: [
-                {
-                    nombreUsuario: "Carlos Méndez",
-                    texto: "El híbrido me sorprendió, gasta poquísimo.",
+                    nombreUsuario: "Laura Pérez",
+                    texto: "La mejor combinación de sabores simples.",
                     imagenUsuario: ""
                 }
             ]
         }, 
         {
-            nombre: "Ford Fiesta",
-            imagen: "",
-            descripcion: "Compacto ágil, económico y fácil de estacionar, ideal para ciudad.",
+            nombre: "Sushi",
+            id: 2,
+            imagen: "/images/products/sushi.jpg",
+            descripcion: "Plato japonés a base de arroz avinagrado con pescado y vegetales.",
             comentarios: [
                 {
-                    nombreUsuario: "Lucía Ramírez",
-                    texto: "Lo tengo hace 5 años y nunca me falló.",
+                    nombreUsuario: "Kenji Yamamoto",
+                    texto: "Me encanta el sashimi fresco, muy saludable.",
                     imagenUsuario: ""
                 }
             ]
         }, 
         {
-            nombre: "Toyota Yaris",
-            imagen: "",
-            descripcion: "Auto compacto confiable, con diseño moderno y gran eficiencia de combustible.",
+            nombre: "Hamburguesa Clásica",
+            id: 3,
+            imagen: "/images/products/hamburguesaClasica.jpg",
+            descripcion: "Pan suave con carne jugosa, queso, lechuga y tomate.",
             comentarios: [
                 {
-                    nombreUsuario: "Diego Torres",
-                    texto: "Ideal para primer auto, muy fácil de manejar.",
+                    nombreUsuario: "Tomás Rivas",
+                    texto: "Nunca falla, perfecta con papas fritas.",
                     imagenUsuario: ""
                 }
             ]
         }, 
         {
-            nombre: "Honda CRV",
-            imagen: "",
-            descripcion: "SUV espaciosa con excelente confort y gran durabilidad.",
+            nombre: "Paella Valenciana",
+            id: 4,
+            imagen: "/images/products/paellaValenciana.webp",
+            descripcion: "Arroz español con mariscos, pollo, conejo y verduras.",
             comentarios: [
                 {
-                    nombreUsuario: "Paula Fernández",
-                    texto: "El espacio trasero es lo mejor, muy cómoda para la familia.",
+                    nombreUsuario: "Isabel Torres",
+                    texto: "La probé en Valencia, espectacular.",
                     imagenUsuario: ""
                 }
             ]
         }, 
         {
-            nombre: "Volkswagen Golf",
-            imagen: "",
-            descripcion: "Hatchback icónico, con gran desempeño y estilo deportivo.",
+            nombre: "Ramen",
+            id: 5,
+            imagen: "/images/products/ramen.webp",
+            descripcion: "Sopa japonesa de fideos con caldo, carne, huevo y vegetales.",
             comentarios: [
                 {
-                    nombreUsuario: "Martín Gómez",
-                    texto: "Un clásico, tiene buena potencia y se siente firme en ruta.",
+                    nombreUsuario: "Mateo Sánchez",
+                    texto: "El caldo es increíble, muy reconfortante.",
                     imagenUsuario: ""
                 }
             ]
         }, 
         {
-            nombre: "Volkswagen T1",
-            imagen: "",
-            descripcion: "La legendaria Kombi, símbolo de los viajes y la libertad.",
+            nombre: "Tacos Mexicanos",
+            id: 6,
+            imagen: "/images/products/tacosMexicanos.jpeg",
+            descripcion: "Tortillas de maíz rellenas con carne, cebolla, cilantro y salsa.",
             comentarios: [
                 {
-                    nombreUsuario: "Sofía Álvarez",
-                    texto: "Me encanta lo retro, es un ícono hippie.",
+                    nombreUsuario: "Ana Martínez",
+                    texto: "Los de pastor son mis favoritos.",
                     imagenUsuario: ""
                 }
             ]
         }, 
         {
-            nombre: "Toyota SW4",
-            imagen: "",
-            descripcion: "SUV robusta y potente, ideal para ciudad y caminos difíciles.",
+            nombre: "Asado Argentino",
+            id: 7,
+            imagen: "/images/products/asadoArgentino.jpg",
+            descripcion: "Carne a la parrilla, tradición y sabor en cada corte.",
             comentarios: [
                 {
-                    nombreUsuario: "Javier Ruiz",
-                    texto: "Perfecta para viajes largos y terrenos complicados.",
+                    nombreUsuario: "Gonzalo Herrera",
+                    texto: "El mejor plan de domingo con amigos.",
                     imagenUsuario: ""
                 }
             ]
         }, 
         {
-            nombre: "Kia Carnival",
-            imagen: "",
-            descripcion: "Minivan premium, con gran capacidad para familias numerosas.",
+            nombre: "Ceviche Peruano",
+            id: 8,
+            imagen: "/images/products/cevichePeruano.avif",
+            descripcion: "Pescado marinado en jugo de limón con cebolla, ají y cilantro.",
             comentarios: [
                 {
-                    nombreUsuario: "Valentina Herrera",
-                    texto: "Viajamos 7 personas cómodos, súper espaciosa.",
+                    nombreUsuario: "Camila Núñez",
+                    texto: "Fresco y delicioso, ideal en verano.",
                     imagenUsuario: ""
                 }
             ]
         }, 
         {
-            nombre: "Ford Ranger",
-            imagen: "",
-            descripcion: "Pick-up confiable, fuerte y versátil para trabajo y aventura.",
+            nombre: "Pad Thai",
+            id: 9,
+            imagen: "/images/products/padThai.avif",
+            descripcion: "Salteado tailandés de fideos de arroz con camarones, tofu y maní.",
             comentarios: [
                 {
-                    nombreUsuario: "Andrés Morales",
-                    texto: "Muy buena para el campo, la uso todos los días.",
+                    nombreUsuario: "David Romero",
+                    texto: "El contraste dulce y salado es único.",
                     imagenUsuario: ""
                 }
             ]
-        }
+        }, 
+        {
+            nombre: "Helado Artesanal",
+            id: 10,
+            imagen: "/images/products/heladoArtesanal.jpg",
+            descripcion: "Postre cremoso disponible en infinidad de sabores.",
+            comentarios: [
+                {
+                    nombreUsuario: "Florencia Díaz",
+                    texto: "Mi debilidad, sobre todo el de pistacho.",
+                    imagenUsuario: ""
+                }
+            ]
+        }        
     ]
 }
 
