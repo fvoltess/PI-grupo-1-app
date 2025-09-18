@@ -1,141 +1,244 @@
 const localData = {
-    usuario: {
-        nombre: "",
-        email: "",
-        contrasena: ""
+  usuario: {
+    nombre: "Fede",
+    email: "fede@gmail.com",
+    contrasena: "pass123",
+    imagenPerfil: "/images/users/fede.jpg",
+  },
+
+  productos: [
+    {
+      id: 1,
+      nombre: "Asado Argentino",
+      imagen: "/images/products/asadoArgentino.jpg",
+      descripcion: "Corte de carne asada con chimichurri.",
+      comentarios: [
+        {
+          nombreUsuario: "Mili",
+          texto: "Muy bueno.",
+          imagenUsuario: "/images/users/mili.jpg",
+        },
+        {
+          nombreUsuario: "Bauti",
+          texto: "Excelente.",
+          imagenUsuario: "/images/users/bauti.jpg",
+        },
+        {
+          nombreUsuario: "Cristiano Ronaldo",
+          texto: "Genial.",
+          imagenUsuario: "/images/users/ronaldo.jpg",
+        },
+      ],
     },
-    productos: [
+    {
+      id: 2,
+      nombre: "Paella Valenciana",
+      imagen: "/images/products/paellaValenciana.jpg",
+      descripcion: "Arroz con mariscos, pollo, conejo y vegetales.",
+      comentarios: [
         {
-            nombre: "Pizza Napolitana",
-            id: 1,
-            imagen: "images/products/pizzaNapolitana.jpg",
-            descripcion: "Clásica pizza italiana con tomate, mozzarella fresca y albahaca.",
-            comentarios: [
-                {
-                    nombreUsuario: "Laura Pérez",
-                    texto: "La mejor combinación de sabores simples.",
-                    imagenUsuario: ""
-                }
-            ]
-        }, 
+          nombreUsuario: "Mili",
+          texto: "Muy bueno.",
+          imagenUsuario: "/images/users/mili.jpg",
+        },
         {
-            nombre: "Sushi",
-            id: 2,
-            imagen: "/images/products/sushi.jpg",
-            descripcion: "Plato japonés a base de arroz avinagrado con pescado y vegetales.",
-            comentarios: [
-                {
-                    nombreUsuario: "Kenji Yamamoto",
-                    texto: "Me encanta el sashimi fresco, muy saludable.",
-                    imagenUsuario: ""
-                }
-            ]
-        }, 
+          nombreUsuario: "Leo Messi",
+          texto: "Muy rico.",
+          imagenUsuario: "/images/users/messi.jpg",
+        },
         {
-            nombre: "Hamburguesa Clásica",
-            id: 3,
-            imagen: "/images/products/hamburguesaClasica.jpg",
-            descripcion: "Pan suave con carne jugosa, queso, lechuga y tomate.",
-            comentarios: [
-                {
-                    nombreUsuario: "Tomás Rivas",
-                    texto: "Nunca falla, perfecta con papas fritas.",
-                    imagenUsuario: ""
-                }
-            ]
-        }, 
+          nombreUsuario: "Bauti",
+          texto: "Genial.",
+          imagenUsuario: "/images/users/bauti.jpg",
+        },
+      ],
+    },
+    {
+      id: 3,
+      nombre: "Arepas Venezolanas",
+      imagen: "/images/products/arepasVenezolanas.jpg",
+      descripcion: "Tortillas de maíz rellenas con queso y carne mechada.",
+      comentarios: [
         {
-            nombre: "Paella Valenciana",
-            id: 4,
-            imagen: "/images/products/paellaValenciana.webp",
-            descripcion: "Arroz español con mariscos, pollo, conejo y verduras.",
-            comentarios: [
-                {
-                    nombreUsuario: "Isabel Torres",
-                    texto: "La probé en Valencia, espectacular.",
-                    imagenUsuario: ""
-                }
-            ]
-        }, 
+          nombreUsuario: "Fede",
+          texto: "Lo mejor de toda la página. Increíbles!",
+          imagenUsuario: "/images/users/fede.jpg",
+        },
         {
-            nombre: "Ramen",
-            id: 5,
-            imagen: "/images/products/ramen.webp",
-            descripcion: "Sopa japonesa de fideos con caldo, carne, huevo y vegetales.",
-            comentarios: [
-                {
-                    nombreUsuario: "Mateo Sánchez",
-                    texto: "El caldo es increíble, muy reconfortante.",
-                    imagenUsuario: ""
-                }
-            ]
-        }, 
+          nombreUsuario: "Cristiano Ronaldo",
+          texto: "Espectaculares, no hay nada igual.",
+          imagenUsuario: "/images/users/ronaldo.jpg",
+        },
         {
-            nombre: "Tacos Mexicanos",
-            id: 6,
-            imagen: "/images/products/tacosMexicanos.jpeg",
-            descripcion: "Tortillas de maíz rellenas con carne, cebolla, cilantro y salsa.",
-            comentarios: [
-                {
-                    nombreUsuario: "Ana Martínez",
-                    texto: "Los de pastor son mis favoritos.",
-                    imagenUsuario: ""
-                }
-            ]
-        }, 
+          nombreUsuario: "Leo Messi",
+          texto: "Son perfectas, las mejores del mundo.",
+          imagenUsuario: "/images/users/messi.jpg",
+        },
+      ],
+    },
+    {
+      id: 4,
+      nombre: "Empanadas de Carne",
+      imagen: "/images/products/empanadas.jpg",
+      descripcion: "Masa frita rellena de carne sazonada.",
+      comentarios: [
         {
-            nombre: "Asado Argentino",
-            id: 7,
-            imagen: "/images/products/asadoArgentino.jpg",
-            descripcion: "Carne a la parrilla, tradición y sabor en cada corte.",
-            comentarios: [
-                {
-                    nombreUsuario: "Gonzalo Herrera",
-                    texto: "El mejor plan de domingo con amigos.",
-                    imagenUsuario: ""
-                }
-            ]
-        }, 
+          nombreUsuario: "Fede",
+          texto: "Muy bueno.",
+          imagenUsuario: "/images/users/fede.jpg",
+        },
         {
-            nombre: "Ceviche Peruano",
-            id: 8,
-            imagen: "/images/products/cevichePeruano.avif",
-            descripcion: "Pescado marinado en jugo de limón con cebolla, ají y cilantro.",
-            comentarios: [
-                {
-                    nombreUsuario: "Camila Núñez",
-                    texto: "Fresco y delicioso, ideal en verano.",
-                    imagenUsuario: ""
-                }
-            ]
-        }, 
+          nombreUsuario: "Bauti",
+          texto: "Excelente.",
+          imagenUsuario: "/images/users/bauti.jpg",
+        },
         {
-            nombre: "Pad Thai",
-            id: 9,
-            imagen: "/images/products/padThai.avif",
-            descripcion: "Salteado tailandés de fideos de arroz con camarones, tofu y maní.",
-            comentarios: [
-                {
-                    nombreUsuario: "David Romero",
-                    texto: "El contraste dulce y salado es único.",
-                    imagenUsuario: ""
-                }
-            ]
-        }, 
+          nombreUsuario: "Leo Messi",
+          texto: "Genial.",
+          imagenUsuario: "/images/users/messi.jpg",
+        },
+      ],
+    },
+    {
+      id: 5,
+      nombre: "Helado Artesanal",
+      imagen: "/images/products/heladoArtesanal.jpg",
+      descripcion: "Helado hecho a mano con ingredientes frescos.",
+      comentarios: [
         {
-            nombre: "Helado Artesanal",
-            id: 10,
-            imagen: "/images/products/heladoArtesanal.jpg",
-            descripcion: "Postre cremoso disponible en infinidad de sabores.",
-            comentarios: [
-                {
-                    nombreUsuario: "Florencia Díaz",
-                    texto: "Mi debilidad, sobre todo el de pistacho.",
-                    imagenUsuario: ""
-                }
-            ]
-        }        
-    ]
-}
+          nombreUsuario: "Fede",
+          texto: "Muy bueno.",
+          imagenUsuario: "/images/users/fede.jpg",
+        },
+        {
+          nombreUsuario: "Mili",
+          texto: "Muy rico.",
+          imagenUsuario: "/images/users/mili.jpg",
+        },
+        {
+          nombreUsuario: "Cristiano Ronaldo",
+          texto: "Excelente.",
+          imagenUsuario: "/images/users/ronaldo.jpg",
+        },
+      ],
+    },
+    {
+      id: 6,
+      nombre: "Ceviche Peruano",
+      imagen: "/images/products/cevichePeruano.jpg",
+      descripcion: "Pescado marinado en limón con cebolla y cilantro.",
+      comentarios: [
+        {
+          nombreUsuario: "Fede",
+          texto: "Muy bueno.",
+          imagenUsuario: "/images/users/fede.jpg",
+        },
+        {
+          nombreUsuario: "Mili",
+          texto: "Genial.",
+          imagenUsuario: "/images/users/mili.jpg",
+        },
+        {
+          nombreUsuario: "Leo Messi",
+          texto: "Excelente.",
+          imagenUsuario: "/images/users/messi.jpg",
+        },
+      ],
+    },
+    {
+      id: 7,
+      nombre: "Pizza Napolitana",
+      imagen: "/images/products/pizzaNapolitana.jpg",
+      descripcion: "Pizza con tomate, mozzarella fresca y albahaca.",
+      comentarios: [
+        {
+          nombreUsuario: "Fede",
+          texto: "Muy bueno.",
+          imagenUsuario: "/images/users/fede.jpg",
+        },
+        {
+          nombreUsuario: "Mili",
+          texto: "Excelente.",
+          imagenUsuario: "/images/users/mili.jpg",
+        },
+        {
+          nombreUsuario: "Bauti",
+          texto: "Genial.",
+          imagenUsuario: "/images/users/bauti.jpg",
+        },
+      ],
+    },
+    {
+      id: 8,
+      nombre: "Ramen Japonés",
+      imagen: "/images/products/ramen.jpg",
+      descripcion: "Sopa japonesa con fideos, caldo y carne de cerdo.",
+      comentarios: [
+        {
+          nombreUsuario: "Fede",
+          texto: "Muy bueno.",
+          imagenUsuario: "/images/users/fede.jpg",
+        },
+        {
+          nombreUsuario: "Mili",
+          texto: "Genial.",
+          imagenUsuario: "/images/users/mili.jpg",
+        },
+        {
+          nombreUsuario: "Leo Messi",
+          texto: "Excelente.",
+          imagenUsuario: "/images/users/messi.jpg",
+        },
+      ],
+    },
+    {
+      id: 9,
+      nombre: "Sushi Japonés",
+      imagen: "/images/products/sushi.jpg",
+      descripcion: "Rollos de arroz con pescado fresco y vegetales.",
+      comentarios: [
+        {
+          nombreUsuario: "Fede",
+          texto: "Muy bueno.",
+          imagenUsuario: "/images/users/fede.jpg",
+        },
+        {
+          nombreUsuario: "Bauti",
+          texto: "Excelente.",
+          imagenUsuario: "/images/users/bauti.jpg",
+        },
+        {
+          nombreUsuario: "Cristiano Ronaldo",
+          texto: "Genial.",
+          imagenUsuario: "/images/users/ronaldo.jpg",
+        },
+      ],
+    },
+    
+    {
+      id: 10,
+      nombre: "Tacos Mexicanos",
+      imagen: "/images/products/tacosMexicanos.jpg",
+      descripcion: "Tortillas de maíz rellenas de carne, cebolla y cilantro.",
+      comentarios: [
+        {
+          nombreUsuario: "Fede",
+          texto: "Muy bueno.",
+          imagenUsuario: "/images/users/fede.jpg",
+        },
+        {
+          nombreUsuario: "Mili",
+          texto: "Excelente.",
+          imagenUsuario: "/images/users/mili.jpg",
+        },
+        {
+          nombreUsuario: "Bauti",
+          texto: "Genial.",
+          imagenUsuario: "/images/users/bauti.jpg",
+        },
+      ],
+    },
+  ],
+};
 
 module.exports = localData;
