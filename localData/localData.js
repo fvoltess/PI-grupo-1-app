@@ -1,9 +1,9 @@
 const localData = {
   usuario: {
-    nombre: "Fede",
-    email: "fede@gmail.com",
+    nombre: "Leo Messi",
+    email: "leo@gmail.com",
     contrasena: "pass123",
-    imagenPerfil: "/images/users/fede.jpg",
+    imagenPerfil: "/images/users/leoMessi.png",
   },
 
   productos: [
@@ -79,7 +79,7 @@ const localData = {
     {
       id: 4,
       nombre: "Empanadas de Carne",
-      imagen: "/images/products/empanadas.jpg",
+      imagen: "/images/products/empanadasDeCarne.webp",
       descripcion: "Masa frita rellena de carne sazonada.",
       comentarios: [
         {
