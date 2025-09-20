@@ -1,42 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- Include Head -->
+  <!-- Include Head -->
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link width="" rel="shortcut icon" href="./images/logo-mercado-liebre.jpg" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link width="" rel="shortcut icon" href="/images/logo-mercado-liebre.jpg" />
 
-	<title> Mercado Liebre Argentina</title>
-	<!-- Font Awesome Stylesheet -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-	
-	<link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css">
-	
-	<link rel="stylesheet" href="/stylesheets/app.css">
-</head>
+    <title>Mercado Liebre Argentina</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+    />
 
-<body>
-	 <%- include("./partials/header") %>
+    <link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css" />
 
-	<!-- Novedades -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Agregar productos</h2>
-			</div>
-			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá va el formulario para agregar prodcutos al catálogo. <br>
-			Debe cumplir con los puntos de la consigna y ser coherente con la tabla de la base de datos. <br>
-			Eliminen estás líneas y coloquen el formulario. <br>
-			Recuerden todo lo que necesita tanto la etiqueta form como los campos input para operar correctamtente</i> <br>
-			////////////////
-			</h2>
+    <link rel="stylesheet" href="/stylesheets/app.css" />
+  </head>
 
+  <body class="product-add-body">
+    <%- include("./partials/header") %>
 
-	<!-- footer -->
-	<%- include("./partials/footer") %>
-	<!-- /footer -->
-</body>
+    <div class="container products-wrapper">
+      <div class="row">
+        <div class="col-12 headers-container">
+          <h2 class="products-title">Agregar productos</h2>
+          <p class="products-subtitle">
+            Completa el formulario para agregar un nuevo producto
+          </p>
+        </div>
+        <div class="form-container product-add">
+          <form action="/products/add" method="GET">
+            <label for="nombre">Nombre del producto</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nombre"
+              name="nombre"
+              r
+              equired
+            />
+            <label for="descripcion">Descripción</label>
+            <input
+              type="text"
+              class="form-control"
+              id="descripcion"
+              name="descripcion"
+              required
+            />
+            <label for="imagen">Imagen del producto</label>
+            <input type="file" id="imagen" name="imagen" required />
+            <input type="submit" value="Agregar Producto" id="submit-btn" />
+          </form>
+        </div>
+      </div>
+    </div>
 
+    <%- include("./partials/footer") %>
+  </body>
 </html>

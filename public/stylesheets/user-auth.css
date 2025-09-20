@@ -1,4 +1,4 @@
-body.register-body .products-wrapper {
+/* body.register-body .products-wrapper {
   width: 100%;
   min-height: 60vh;
 }
@@ -17,7 +17,8 @@ body.register-body .products-wrapper {
   display: flex;
   justify-content: center;
 }
-.auth-form {
+.auth-form,
+.product-add-body form {
   width: 600px;
   margin-top: 6rem;
   padding: 60px 0 30px 0;
@@ -29,7 +30,8 @@ body.register-body .products-wrapper {
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.1);
 }
 
-.auth-form input {
+.auth-form input,
+.product-add-body form input {
   width: 80%;
   height: 35px;
   margin-bottom: 20px;
@@ -40,11 +42,14 @@ body.register-body .products-wrapper {
   transition: all 0.3s ease;
 }
 .auth-form input:active,
-.auth-form input:focus {
+.product-add-body form input:active,
+.auth-form input:focus,
+.product-add-body form input:focus {
   outline: none;
   border: 1px solid rgb(46, 46, 46);
 }
-.auth-form label {
+.auth-form label,
+.product-add-body form label {
   width: 80%;
   text-align: left;
   font-size: 16px;
@@ -54,7 +59,7 @@ body.register-body .products-wrapper {
 .remember-me-container {
   width: 80%;
   display: flex;
-  align-items: center;
+  align-ite ms: center;
   justify-content: flex-start;
 }
 .remember-me-container input,
@@ -77,4 +82,4 @@ body.register-body .products-wrapper {
 #submit-btn:hover {
   background-color: rgb(255, 255, 0);
   cursor: pointer;
-}
+} */
