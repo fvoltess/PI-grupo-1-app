@@ -11,21 +11,25 @@ const controller = {
     res.render("register", { title: "Register" });
   },
   profile: function (req, res) {
-    productosUsuario = []
+    productosUsuario = [];
 
     for (let i = 0; i < localData.productos.length; i++) {
-      producto = localData.productos[i]
-      
-      for (let index = 0; index < producto.comentarios.length; index++) {
-        infoComentario = producto.comentarios[i]
-        
+      producto = localData.productos[i];
+
+      for (let i = 0; i < producto.comentarios.length; i++) {
+        infoComentario = producto.comentarios[i];
+
         if (infoComentario.nombreUsuario == "Leo Messi") {
-          productosUsuario.push(producto)
+          productosUsuario.push(producto);
         }
       }
     }
 
-    res.render("profile", { infoUsuario: localData.usuario, title: "Profile", productosUsuario: productosUsuario});
+    res.render("profile", {
+      infoUsuario: localData.usuario,
+      title: "Profile",
+      productosUsuario: productosUsuario,
+    });
   },
 };
 

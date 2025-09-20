@@ -16,7 +16,7 @@ const localData = {
         {
           nombreUsuario: "Mili",
           texto: "Muy bueno.",
-          imagenUsuario: "/images/users/mili.jpg",
+          imagenUsuario: "/images/users/mili.png",
         },
         {
           nombreUsuario: "Bauti",
@@ -39,12 +39,12 @@ const localData = {
         {
           nombreUsuario: "Mili",
           texto: "Muy bueno.",
-          imagenUsuario: "/images/users/mili.jpg",
+          imagenUsuario: "/images/users/mili.png",
         },
         {
           nombreUsuario: "Leo Messi",
           texto: "Muy rico.",
-          imagenUsuario: "/images/users/messi.jpg",
+          imagenUsuario: "/images/users/leoMessi.png",
         },
         {
           nombreUsuario: "Bauti",
@@ -62,7 +62,7 @@ const localData = {
         {
           nombreUsuario: "Fede",
           texto: "Lo mejor de toda la página. Increíbles!",
-          imagenUsuario: "/images/users/fede.jpg",
+          imagenUsuario: "/images/users/fede.png",
         },
         {
           nombreUsuario: "Cristiano Ronaldo",
@@ -72,20 +72,20 @@ const localData = {
         {
           nombreUsuario: "Leo Messi",
           texto: "Son perfectas, las mejores del mundo.",
-          imagenUsuario: "/images/users/messi.jpg",
+          imagenUsuario: "/images/users/leoMessi.png",
         },
       ],
     },
     {
       id: 4,
-      nombre: "Empanadas de Carne",
+      nombre: "Empanadas",
       imagen: "/images/products/empanadasDeCarne.webp",
       descripcion: "Masa frita rellena de carne sazonada.",
       comentarios: [
         {
           nombreUsuario: "Fede",
           texto: "Muy bueno.",
-          imagenUsuario: "/images/users/fede.jpg",
+          imagenUsuario: "/images/users/fede.png",
         },
         {
           nombreUsuario: "Bauti",
@@ -95,7 +95,7 @@ const localData = {
         {
           nombreUsuario: "Leo Messi",
           texto: "Genial.",
-          imagenUsuario: "/images/users/messi.jpg",
+          imagenUsuario: "/images/users/leoMessi.png",
         },
       ],
     },
@@ -108,12 +108,12 @@ const localData = {
         {
           nombreUsuario: "Fede",
           texto: "Muy bueno.",
-          imagenUsuario: "/images/users/fede.jpg",
+          imagenUsuario: "/images/users/fede.png",
         },
         {
           nombreUsuario: "Mili",
           texto: "Muy rico.",
-          imagenUsuario: "/images/users/mili.jpg",
+          imagenUsuario: "/images/users/mili.png",
         },
         {
           nombreUsuario: "Cristiano Ronaldo",
@@ -131,17 +131,17 @@ const localData = {
         {
           nombreUsuario: "Fede",
           texto: "Muy bueno.",
-          imagenUsuario: "/images/users/fede.jpg",
+          imagenUsuario: "/images/users/fede.png",
         },
         {
           nombreUsuario: "Mili",
           texto: "Genial.",
-          imagenUsuario: "/images/users/mili.jpg",
+          imagenUsuario: "/images/users/mili.png",
         },
         {
           nombreUsuario: "Leo Messi",
           texto: "Excelente.",
-          imagenUsuario: "/images/users/messi.jpg",
+          imagenUsuario: "/images/users/leoMessi.png",
         },
       ],
     },
@@ -154,12 +154,12 @@ const localData = {
         {
           nombreUsuario: "Fede",
           texto: "Muy bueno.",
-          imagenUsuario: "/images/users/fede.jpg",
+          imagenUsuario: "/images/users/fede.png",
         },
         {
           nombreUsuario: "Mili",
           texto: "Excelente.",
-          imagenUsuario: "/images/users/mili.jpg",
+          imagenUsuario: "/images/users/mili.png",
         },
         {
           nombreUsuario: "Bauti",
@@ -177,17 +177,17 @@ const localData = {
         {
           nombreUsuario: "Fede",
           texto: "Muy bueno.",
-          imagenUsuario: "/images/users/fede.jpg",
+          imagenUsuario: "/images/users/fede.png",
         },
         {
           nombreUsuario: "Mili",
           texto: "Genial.",
-          imagenUsuario: "/images/users/mili.jpg",
+          imagenUsuario: "/images/users/mili.png",
         },
         {
           nombreUsuario: "Leo Messi",
           texto: "Excelente.",
-          imagenUsuario: "/images/users/messi.jpg",
+          imagenUsuario: "/images/users/leoMessi.png",
         },
       ],
     },
@@ -200,7 +200,7 @@ const localData = {
         {
           nombreUsuario: "Fede",
           texto: "Muy bueno.",
-          imagenUsuario: "/images/users/fede.jpg",
+          imagenUsuario: "/images/users/fede.png",
         },
         {
           nombreUsuario: "Bauti",
@@ -214,7 +214,7 @@ const localData = {
         },
       ],
     },
-    
+
     {
       id: 10,
       nombre: "Tacos Mexicanos",
@@ -224,12 +224,12 @@ const localData = {
         {
           nombreUsuario: "Fede",
           texto: "Muy bueno.",
-          imagenUsuario: "/images/users/fede.jpg",
+          imagenUsuario: "/images/users/fede.png",
         },
         {
           nombreUsuario: "Mili",
           texto: "Excelente.",
-          imagenUsuario: "/images/users/mili.jpg",
+          imagenUsuario: "/images/users/mili.png",
         },
         {
           nombreUsuario: "Bauti",
