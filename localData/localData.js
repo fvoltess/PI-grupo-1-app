@@ -237,7 +237,7 @@ const localData = {
           imagenUsuario: "/images/users/bauti.jpg",
         },
       ],
-    },
+    }
   ],
 };
 

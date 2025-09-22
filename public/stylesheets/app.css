@@ -15,6 +15,7 @@
 /*====== Basics ======*/
 * {
   box-sizing: border-box;
+  color: #4B2E14
 }
 
 html,
@@ -27,7 +28,7 @@ body {
 body {
   font-family: var(--base-font-family);
   font-weight: 300;
-  background-color: var(--light-gray);
+  background-color: white;
 }
 
 ul,
@@ -40,7 +41,6 @@ ol {
 a {
   display: inline-block;
   text-decoration: none;
-  color: inherit;
 }
 
 figure {
@@ -65,7 +65,7 @@ hr {
 /*====== Main Header ======*/
 .main-header {
   padding: 15px 0;
-  background-color: var(--yellow);
+  background-color: white;
 }
 
 .main-header_home-link,
@@ -93,6 +93,7 @@ hr {
   border-radius: 3px;
   height: 40px;
   font-size: 1.5em;
+  color: 4B2E14;
 }
 
 .search-form_button {
@@ -147,24 +148,37 @@ hr {
 }
 
 /*====== Banner ======*/
-.banner {
-  background-image: url(/images/img-home-banner.jpg);
+
+.indexBody {
+  background-image: url(/images/mesadaCocina.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  height: 100px;
+}
+
+.banner {
+  background-image: url(/images/mesadaCocina.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.banner img {
+  max-height: 320px;
 }
 
 /*====== Products ======*/
 .products-wrapper {
   margin-top: 30px;
   margin-bottom: 30px;
+  background-color: var(white);
+  border-radius: 1%;
 }
 
 .products-title {
   font-size: 2.4em;
   font-weight: 400;
-  color: var(--gray);
+  color: #4B2E14;
 }
 
 .product-box {
@@ -215,7 +229,7 @@ hr {
 .product-box_data p {
   font-size: 1.5em;
   width: 100%;
-  color: var(--gray);
+  color: #4B2E14;
   margin: 0;
   height: 0;
   transition: 300ms;
@@ -270,18 +284,18 @@ hr {
 }
 
 .footer-data i {
-  color: var(--light-blue);
+  color: #E94E1B;
   font-size: 3.5em;
 }
 
 .footer-data h2 {
-  color: var(--gray);
+  color: #4B2E14;
   font-size: 2.4em;
   font-weight: 400;
 }
 
 .footer-data p {
-  color: var(--gray);
+  color: #4B2E14;
   font-size: 1.5em;
   font-weight: 300;
 }
@@ -316,7 +330,7 @@ body.register-body .products-wrapper {
 
 .headers-container p {
   font-size: 15px;
-  color: rgb(87, 87, 87);
+  color: #4B2E14;
 }
 
 .form-container {
@@ -469,7 +483,7 @@ input#imagen {
 }
 
 .buy-now-button {
-  background-color: var(--light-blue);
+  background-color: #E94E1B;
   font-size: 1.6em;
   color: #ffffff;
   padding: 15px;
