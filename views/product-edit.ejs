@@ -1,69 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- Include Head -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link width="" rel="shortcut icon" href="/images/favicon2.png" />
+    <title>Mordisco</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="/stylesheets/app.css" />
+  </head>
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link width="" rel="shortcut icon" href="/images/favicon2.png" />
+  <body class="product-add-body">
+    <%- include("./partials/header", {isLogged: true, nombreUsuario: `Leo
+    Messi`}) %>
+    <div class="container products-wrapper">
+      <div class="row">
+        <div class="col-12 headers-container">
+          <h2 class="products-title">Editar producto</h2>
+          <p class="products-subtitle">
+            Completa el formulario para editar un producto
+          </p>
+        </div>
+        <div class="form-container product-add">
+          <form action="/index" method="GET">
+            <label for="nombre">Nombre del producto</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nombre"
+              name="nombre"
+              required
+            />
+            <label for="descripcion">Descripción</label>
+            <input
+              type="text"
+              class="form-control"
+              id="descripcion"
+              name="descripcion"
+              required
+            />
+            <label for="imagen">Imagen del producto</label>
+            <input
+              type="text"
+              class="form-control"
+              id="imagen"
+              name="imagen"
+              required
+            />
+            <input type="submit" value="Agregar Producto" id="submit-btn" />
+          </form>
+        </div>
+      </div>
+    </div>
 
-	<title>Mordisco</title>
-	<!-- Font Awesome Stylesheet -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-	
-	<link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css">
-	
-	<link rel="stylesheet" href="/stylesheets/app.css">
-</head>
-
-<body class="product-add-body">
-	 <%- include("./partials/header") %>
-
-	<!-- Novedades -->
-	<div class="container products-wrapper">
-		<div class="row">
-		  	<div class="col-12 headers-container">
-				<h2 class="products-title">Editar producto</h2>
-				<p class="products-subtitle">
-			  		Completa el formulario para editar un  producto
-				</p>
-		  	</div>
-		  	<div class="form-container product-add">
-				<form action="/index" method="GET">
-			  	<label for="nombre">Nombre del producto</label>
-			  	<input
-					type="text"
-					class="form-control"
-					id="nombre"
-					name="nombre"
-					required
-			  	/>
-			  	<label for="descripcion">Descripción</label>
-			  	<input
-					type="text"
-					class="form-control"
-					id="descripcion"
-					name="descripcion"
-					required
-			  	/>
-			  	<label for="imagen">Imagen del producto</label>
-            	<input
-              		type="text"
-              		class="form-control"
-              		id="imagen"
-              		name="imagen"
-              		required
-            	/>
-			  	<input type="submit" value="Agregar Producto" id="submit-btn" />
-				</form>
-		  	</div>
-		</div>
-	</div>
-
-
-	<!-- footer -->
-	<%- include("./partials/footer") %>
-	<!-- /footer -->
-</body>
-
+    <%- include("./partials/footer") %>
+  </body>
 </html>

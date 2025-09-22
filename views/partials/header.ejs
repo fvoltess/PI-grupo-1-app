@@ -48,9 +48,12 @@
         <nav class="main-navbar">
           <ul class="left-navbar">
             <li><a href="/index">Todos los productos</a></li>
+            <% if (isLogged) { %>
             <li><a href="/products/product-add">Cargar producto</a></li>
+            <% } %>
           </ul>
           <ul class="right-navbar">
+            <% if (!isLogged) { %>
             <li>
               <a href="/register"
                 >Creá tu cuenta <i class="far fa-address-card"></i>
@@ -59,6 +62,7 @@
             <li>
               <a href="/login">Ingresá <i class="fas fa-sign-in-alt"></i></a>
             </li>
+            <% } %> <% if (isLogged) { %>
             <li>
               <form action="/login" method="get">
                 <button class="logout" type="submit">
@@ -68,9 +72,13 @@
             </li>
             <li>
               <a href="/profile">
-                Nombre del usuario <i class="fas fa-user"></i
-              ></a>
+                <% if (isLogged) { %> <%= nombreUsuario %>
+                <i class="fas fa-user"></i> <% } else { %> Nombre de usuario
+                <i class="fas fa-user"></i>
+                <% } %>
+              </a>
             </li>
+            <% } %>
           </ul>
         </nav>
       </div>
