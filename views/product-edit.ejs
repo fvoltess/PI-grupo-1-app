@@ -29,7 +29,7 @@
 				</p>
 		  	</div>
 		  	<div class="form-container product-add">
-				<form action="/products/product-edit" method="GET">
+				<form action="/index" method="GET">
 			  	<label for="nombre">Nombre del producto</label>
 			  	<input
 					type="text"
@@ -47,13 +47,13 @@
 					required
 			  	/>
 			  	<label for="imagen">Imagen del producto</label>
-			  	<input
-					type="file"
-					id="imagen"
-					name="imagen"
-					required
-					class="upload-file-input"
-			  	/>
+            	<input
+              		type="text"
+              		class="form-control"
+              		id="imagen"
+              		name="imagen"
+              		required
+            	/>
 			  	<input type="submit" value="Agregar Producto" id="submit-btn" />
 				</form>
 		  	</div>
