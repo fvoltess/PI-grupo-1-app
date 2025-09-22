@@ -19,8 +19,9 @@
   </head>
 
   <body>
-    <%- include("./partials/header") %>
-    <!-- product detail -->
+    <%- include("./partials/header", {isLogged: true, nombreUsuario: `Leo
+    Messi`}) %>
+
     <div class="container products-wrapper">
       <div class="d-flex align-items-center">
         <h2 class="products-title"><%=informacion.nombre%></h2>
