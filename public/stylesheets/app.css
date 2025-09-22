@@ -15,7 +15,7 @@
 /*====== Basics ======*/
 * {
   box-sizing: border-box;
-  color: #4B2E14
+  color: #4b2e14;
 }
 
 html,
@@ -55,6 +55,7 @@ img {
 input,
 textarea {
   font-family: inherit;
+  background-color: rgb(218, 218, 218);
 }
 
 hr {
@@ -94,6 +95,7 @@ hr {
   height: 40px;
   font-size: 1.5em;
   color: 4B2E14;
+  background-color: transparent;
 }
 
 .search-form_button {
@@ -147,24 +149,12 @@ hr {
   border-bottom: solid 1px var(--gray);
 }
 
-/*====== Banner ======*/
-
-.indexBody {
-  background-image: url(/images/mesadaCocina.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-}
-
-.banner {
-  background-image: url(/images/mesadaCocina.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-}
-
 .banner img {
-  max-height: 320px;
+  width: 100%;
+  height: 330px;
+  display: block;
+  object-fit: cover;
+  object-position: center 20%;
 }
 
 /*====== Products ======*/
@@ -178,7 +168,7 @@ hr {
 .products-title {
   font-size: 2.4em;
   font-weight: 400;
-  color: #4B2E14;
+  color: #4b2e14;
 }
 
 .product-box {
@@ -229,7 +219,7 @@ hr {
 .product-box_data p {
   font-size: 1.5em;
   width: 100%;
-  color: #4B2E14;
+  color: #4b2e14;
   margin: 0;
   height: 0;
   transition: 300ms;
@@ -284,18 +274,18 @@ hr {
 }
 
 .footer-data i {
-  color: #E94E1B;
+  color: #e94e1b;
   font-size: 3.5em;
 }
 
 .footer-data h2 {
-  color: #4B2E14;
+  color: #4b2e14;
   font-size: 2.4em;
   font-weight: 400;
 }
 
 .footer-data p {
-  color: #4B2E14;
+  color: #4b2e14;
   font-size: 1.5em;
   font-weight: 300;
 }
@@ -330,7 +320,7 @@ body.register-body .products-wrapper {
 
 .headers-container p {
   font-size: 15px;
-  color: #4B2E14;
+  color: #4b2e14;
 }
 
 .form-container {
@@ -368,6 +358,10 @@ body.register-body .products-wrapper {
 .product-add-body form input:focus {
   outline: none;
   border: 1px solid rgb(46, 46, 46);
+}
+
+.upload-file-input {
+  background-color: transparent;
 }
 
 input#imagen {
@@ -483,7 +477,7 @@ input#imagen {
 }
 
 .buy-now-button {
-  background-color: #E94E1B;
+  background-color: #e94e1b;
   font-size: 1.6em;
   color: #ffffff;
   padding: 15px;

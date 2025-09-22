@@ -23,14 +23,11 @@
       <img src="images/mesadaCocina.jpg" alt="Banner de ofertas" />
     </div>
 
-    <!-- Novedades -->
     <div class="container products-wrapper">
       <div class="row">
         <div class="col-12">
           <h2 class="products-title">Productos</h2>
         </div>
-
-        <!-- Show the "ultimos" products -->
 
         <% for(let i = 0; i < products.length; i++) { %>
         <div class="col-12 col-sm-6 col-lg-3">
@@ -45,7 +42,10 @@
               <article class="product-box_data">
                 <h2><%= products[i].nombre %></h2>
                 <p><%= products[i].descripcion %></p>
-                <p><strong>Comentarios:</strong><%= products[i].comentarios.length %></p>
+                <p>
+                  <strong>Comentarios: </strong><%=
+                  products[i].comentarios.length %>
+                </p>
               </article>
             </a>
           </section>

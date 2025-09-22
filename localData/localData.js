@@ -237,7 +237,58 @@ const localData = {
           imagenUsuario: "/images/users/bauti.jpg",
         },
       ],
-    }
+    },
+    {
+      id: 11,
+      nombre: "Curry Indio",
+      imagen: "/images/products/curryIndio.jpg",
+      descripcion: "Plato de carne o vegetales en salsa de especias.",
+      comentarios: [
+        {
+          nombreUsuario: "Mili",
+          texto: "Muy bueno.",
+          imagenUsuario: "/images/users/mili.png",
+        },
+        {
+          nombreUsuario: "Bauti",
+          texto: "Excelente.",
+          imagenUsuario: "/images/users/bauti.jpg",
+        },
+        {
+          nombreUsuario: "Cristiano Ronaldo",
+          texto: "Genial.",
+          imagenUsuario: "/images/users/ronaldo.jpg",
+        },
+      ],
+    },
+    {
+      id: 12,
+      nombre: "Falafel Medio Oriente",
+      imagen: "/images/products/falafelMedioOriente.webp",
+      descripcion: "Croquetas de garbanzos fritas con salsa tahini.",
+      comentarios: [
+        {
+          nombreUsuario: "Fede",
+          texto: "Muy bueno.",
+          imagenUsuario: "/images/users/fede.png",
+        },
+        {
+          nombreUsuario: "Bauti",
+          texto: "Genial.",
+          imagenUsuario: "/images/users/bauti.jpg",
+        },
+        {
+          nombreUsuario: "Mili",
+          texto: "Muy rico.",
+          imagenUsuario: "/images/users/mili.png",
+        },
+        {
+          nombreUsuario: "Cristiano Ronaldo",
+          texto: "Excelente.",
+          imagenUsuario: "/images/users/ronaldo.jpg",
+        },
+      ],
+    },
   ],
 };
 
