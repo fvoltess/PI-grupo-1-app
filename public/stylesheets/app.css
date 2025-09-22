@@ -379,17 +379,15 @@ input#imagen {
 .remember-me-container {
   width: 80%;
   display: flex;
-  align-items: center;
   justify-content: flex-start;
 }
 .remember-me-container input,
 .remember-me-container label {
   width: unset;
-  padding-left: 2px;
-  margin: 0;
 }
 .remember-me-container input {
-  margin-left: 10px;
+  width: 10% !important;
+  height: 15px !important;
 }
 
 #submit-btn {
@@ -578,7 +576,7 @@ textarea.form-input {
 }
 
 .btn {
-  background-color: #1259c3;
+  background-color: #F4A728;
   padding: 10px 20px;
   border-radius: 4px;
   color: #fff;
@@ -615,7 +613,7 @@ textarea.form-input {
 
   .left-navbar a:hover,
   .right-navbar a:hover {
-    color: var(--light-blue);
+    color: var(light-blue--);
   }
 
   .left-navbar li {

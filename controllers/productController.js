@@ -20,7 +20,12 @@ const controller = {
     res.render("product-edit", { title: "Edit Product" });
   },
   searchProduct: function (req, res) {
-    const searchedProducts = comidas.productos.slice(0, 5);
+    const searchedProducts = [];
+
+    for (let i = 0; i < 4; i++) {
+      searchedProducts.push(comidas.productos[i])
+    }
+
     res.render("search-results", {
       title: "Search Product",
       products: searchedProducts,
