@@ -7,7 +7,10 @@ USE foodDb;
 
 CREATE TABLE users (
     id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT, 
+    username VARCHAR(100) NOT NULL,
     email VARCHAR(250) NOT NULL,
+    birthdate DATE NOT NULL,
+    birthcity VARCHAR(250) NOT NULL,
     password VARCHAR(200) NOT NULL,
     profilePicture VARCHAR(250),
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

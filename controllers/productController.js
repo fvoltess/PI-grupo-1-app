@@ -1,4 +1,3 @@
-// hacer los controllers y exportarlos de productos
 const comidas = require("../localData/localData");
 
 const controller = {
@@ -23,7 +22,7 @@ const controller = {
     const searchedProducts = [];
 
     for (let i = 0; i < 4; i++) {
-      searchedProducts.push(comidas.productos[i])
+      searchedProducts.push(comidas.productos[i]);
     }
 
     res.render("search-results", {
