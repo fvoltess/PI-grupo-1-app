@@ -316,11 +316,13 @@ body.register-body .products-wrapper {
 
 .headers-container {
   text-align: center;
+  margin-top: -30px;
 }
 
 .headers-container p {
   font-size: 15px;
   color: #4b2e14;
+  margin-top: -10px;
 }
 
 .form-container {
@@ -328,11 +330,12 @@ body.register-body .products-wrapper {
   display: flex;
   justify-content: center;
 }
+
 .auth-form,
 .product-add-body .form-container form {
   width: 600px;
-  margin-top: 6rem;
-  padding: 60px 0 30px 0;
+  margin-top: 2rem;
+  padding: 50px 0 30px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -388,6 +391,12 @@ input#imagen {
 .remember-me-container input {
   width: 10% !important;
   height: 15px !important;
+}
+
+.auth-form .error-messages p {
+  margin-top: 0;
+  font-size: 18px;
+  color: rgb(209, 0, 0);
 }
 
 #submit-btn {
@@ -576,7 +585,7 @@ textarea.form-input {
 }
 
 .btn {
-  background-color: #F4A728;
+  background-color: #f4a728;
   padding: 10px 20px;
   border-radius: 4px;
   color: #fff;

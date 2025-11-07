@@ -7,10 +7,16 @@ module.exports = function (sequelize, DataTypes) {
       autoIncrement: true,
       primaryKey: true,
     },
-    name: {
+    username: {
       type: DataTypes.STRING(250),
     },
     email: {
+      type: DataTypes.STRING(250),
+    },
+    birthdate: {
+      type: DataTypes.DATE,
+    },
+    birthcity: {
       type: DataTypes.STRING(250),
     },
     password: {
