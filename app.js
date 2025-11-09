@@ -3,6 +3,7 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+const session = require("express-session");
 
 var indexRouter = require("./routes/index");
 var productsRouter = require("./routes/products");
@@ -19,6 +20,36 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(
+  session({
+    secret: "yourSecretKey",
+    resave: false,
+    saveUninitialized: true,
+  })
+);
+
+// Middleware para restaurar sesión desde cookie "recordame"
+app.use((req, res, next) => {
+  // Si no hay sesión activa pero existe la cookie "recordame"
+  if (!req.session.user && req.cookies.recordame) {
+    req.session.user = req.cookies.recordame;
+  }
+  next();
+});
+
+app.use((req, res, next) => {
+  res.locals.user = req.session.user || null;
+  next();
+});
+
+// esta pieza de codigo la vamos a eliminar antes de entregar, es solo para debuggear
+app.use((req, res, next) => {
+  console.log("🔍 CHEKS - res.locals:", res.locals);
+  console.log("🔍 CHEKS - req.session:", req.session);
+  console.log("🔍 CHEKS - req.cookies:", req.cookies);
+
+  next();
+});
 
 app.use("/", indexRouter);
 app.use("/products", productsRouter);

@@ -13,9 +13,15 @@ const controller = {
     res.render("product", { informacion: infoProducto[0] });
   },
   addProduct: function (req, res) {
+    if (!req.session.user) {
+      return res.redirect("/users/login");
+    }
     res.render("product-add", { title: "Add Product" });
   },
   editProduct: function (req, res) {
+    if (!req.session.user) {
+      return res.redirect("/users/login");
+    }
     res.render("product-edit", { title: "Edit Product" });
   },
   searchProduct: function (req, res) {
