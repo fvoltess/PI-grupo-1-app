@@ -19,7 +19,6 @@
   <body class="login-body">
     <%- include("./partials/header", {isLogged: false}) %>
 
-    <!-- Novedades -->
     <div class="container products-wrapper">
       <div class="row">
         <div class="col-12 headers-container">
@@ -27,7 +26,7 @@
           <p>Ingresa a tu cuenta para ver tus productos favoritos</p>
         </div>
         <div class="form-container">
-          <form action="/index" method="get" class="auth-form">
+          <form action="/users/login" method="POST" class="auth-form">
             <label for="email">Email</label>
             <input
               type="email"
@@ -50,6 +49,11 @@
               <label for="remember" class="remember-me">Recordarme:</label>
               <input type="checkbox" name="remember" id="remember" />
             </div>
+            <% if (errors) { %>
+            <div class="error-messages">
+              <p>⚠️ <%= errors %> ⚠️</p>
+            </div>
+            <% } %>
             <input type="submit" value="Iniciar sesión" id="submit-btn" />
           </form>
         </div>

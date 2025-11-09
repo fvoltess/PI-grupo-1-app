@@ -3,6 +3,10 @@ const bcrypt = require("bcryptjs");
 
 const controller = {
   profile: function (req, res) {
+    if (!req.session.user) {
+      return res.redirect("/users/login");
+    }
+
     productosUsuario = [];
 
     for (let i = 0; i < localData.productos.length; i++) {
@@ -24,15 +28,16 @@ const controller = {
     });
   },
   getRegister: function (req, res) {
+    if (req.session.user) {
+      return res.redirect("/users/profile");
+    }
     res.render("register", { title: "Register", errors: null });
   },
   register: function (req, res) {
     if (req.body.password.length < 3) {
       return res.render("register", {
         title: "Register",
-        errors: {
-          message: "La contraseña debe tener al menos 3 caracteres",
-        },
+        errors: "La contraseña debe tener al menos 3 caracteres",
       });
     }
 
@@ -44,18 +49,14 @@ const controller = {
       if (userExists) {
         return res.render("register", {
           title: "Register",
-          errors: {
-            message: "Este email ya está registrado",
-          },
+          errors: "Este email ya está registrado",
         });
       }
 
       if (req.body.password !== req.body.confirmPassword) {
         return res.render("register", {
           title: "Register",
-          errors: {
-            message: "Las contraseñas no coinciden",
-          },
+          errors: "Las contraseñas no coinciden",
         });
       }
 
@@ -69,13 +70,56 @@ const controller = {
         password: hashedPassword,
       })
         .then(() => {
-          return res.redirect("/login");
+          return res.redirect("/users/login");
         })
         .catch((error) => console.log(error));
     });
   },
   getLogin: function (req, res) {
-    res.render("login", { title: "Login" });
+    if (req.session.user) {
+      return res.redirect("/users/profile");
+    }
+    res.render("login", { title: "Login", errors: null });
+  },
+  login: function (req, res) {
+    db.User.findOne({
+      where: { email: req.body.email },
+    })
+      .then((user) => {
+        if (user) {
+          if (!bcrypt.compareSync(req.body.password, user.password))
+            return res.render("login", {
+              title: "Login",
+              errors: "La contraseña ingresada es incorrecta",
+            });
+          req.session.user = {
+            id: user.id,
+            username: user.username,
+            email: user.email,
+            profilePicture: user.profilePicture,
+          };
+
+          if (req.body.remember) {
+            res.cookie("recordame", req.session.user, {
+              maxAge: 10 * 60 * 60 * 1000,
+            });
+            console.log("Cookie creada:", res.cookie);
+          }
+
+          return res.redirect("/index");
+        }
+
+        return res.render("login", {
+          title: "Login",
+          errors: "El usuario es incorrecto",
+        });
+      })
+      .catch((error) => console.error(error));
+  },
+  logout: function (req, res) {
+    req.session.destroy();
+    res.clearCookie("recordame");
+    res.redirect("/users/login");
   },
 };
 
