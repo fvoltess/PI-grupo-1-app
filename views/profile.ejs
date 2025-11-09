@@ -1,44 +1,39 @@
 <!DOCTYPE html>
 <html lang="es">
-  <!-- Include Head -->
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link width="" rel="shortcut icon" href="/images/favicon2.png" />
-
+    <link rel="shortcut icon" href="/images/favicon2.png" />
     <title>Mordisco</title>
-    <!-- Font Awesome Stylesheet -->
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
     />
-
     <link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css" />
-
     <link rel="stylesheet" href="/stylesheets/app.css" />
   </head>
   <body>
-    <%- include("./partials/header", {isLogged: true, nombreUsuario: `Leo
-    Messi`}) %>
+    <%- include("./partials/header", {isLogged: true, nombreUsuario: infoUsuario.username}) %>
 
     <!-- Datos del usuario -->
     <section class="info-usuario container products-wrapper">
       <div class="row">
         <div class="img-container offset-3 col-2">
           <img
-            src="<%= infoUsuario.imagenPerfil%>"
+            src="/images/users/<%= infoUsuario.profilePicture %>"
             alt="foto de perfil"
             class="foto-perfil"
           />
         </div>
         <div class="data-container col-6">
           <div class="d-flex align-items-center">
-            <h1 class="main-title"><%= infoUsuario.nombre%></h1>
+            <h1 class="main-title"><%= infoUsuario.username %></h1>
             <a class="btn mt-3 ml-4" href="">SEGUIR</a>
           </div>
           <div>
-            <ul class="">
-              <li><%= infoUsuario.email%></li>
+            <ul>
+              <li><%= infoUsuario.email %></li>
             </ul>
           </div>
         </div>
@@ -52,23 +47,23 @@
         <div class="col-12">
           <h2 class="products-title">Mis productos</h2>
         </div>
-        <!-- Show mis productos -->
 
-        <% for( let i = 0; i < productosUsuario.length; i++ ) { %>
+        <% for(let i = 0; i < productosUsuario.length; i++) { %>
         <div class="col-12 col-sm-6 col-lg-3">
           <section class="product-box">
-            <a href="/products/product/<%=productosUsuario[i].id%>">
+            <a href="/products/product/<%= productosUsuario[i].id %>">
               <figure class="product-box_image">
                 <img
-                  src="<%= productosUsuario[i].imagen %>"
-                  alt="cafetera moulinex"
+                  src="/images/products/<%= productosUsuario[i].image %>"
+                  alt="<%= productosUsuario[i].name %>"
                 />
               </figure>
               <article class="product-box_data">
-                <h2><%= productosUsuario[i].nombre %></h2>
-                <p><%= productosUsuario[i].descripcion %></p>
+                <h2><%= productosUsuario[i].name %></h2>
+                <p><%= productosUsuario[i].description %></p>
                 <p>
-                  Comentarios: <%= productosUsuario[i].comentarios.length %>
+                  Comentarios:
+                  <%= productosUsuario[i].comments ? productosUsuario[i].comments.length : 0 %>
                 </p>
               </article>
             </a>
@@ -80,6 +75,5 @@
     <!-- /Mis productos -->
 
     <%- include("./partials/footer") %>
-    <!-- /footer -->
   </body>
 </html>
