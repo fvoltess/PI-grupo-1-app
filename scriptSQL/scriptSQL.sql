@@ -67,7 +67,7 @@ INSERT INTO products (userId, image, name, description) VALUES
 (1, "asadoArgentino.jpg", "Asado Argentino", "Corte de carne asada con chimichurri."),
 (1, "paellaValenciana.jpg", "Paella Valenciana", "Arroz con mariscos, pollo, conejo y vegetales."),
 (2, "arepasVenezolanas.jpg", "Arepas Venezolanas", "Tortillas de maíz rellenas con queso y carne mechada."),
-(2, "empanadas.jpg", "Empanadas de Carne", "Masa frita rellena de carne sazonada."),
+(2, "empanadasDeCarne.jpg", "Empanadas de Carne", "Masa frita rellena de carne sazonada."),
 (3, "heladoArtesanal.jpg", "Helado Artesanal", "Helado hecho a mano con ingredientes frescos."),
 (3, "cevichePeruano.jpg", "Ceviche Peruano", "Pescado marinado en limón con cebolla y cilantro."),
 (4, "pizzaNapolitana.jpg", "Pizza Napolitana", "Pizza con tomate, mozzarella fresca y albahaca."),
