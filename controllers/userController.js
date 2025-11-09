@@ -1,5 +1,7 @@
 const db = require("../database/models");
 const bcrypt = require("bcryptjs");
+const usuarios = db.User;
+const productos = db.Product;
 
 const controller = {
   profile: function (req, res) {
@@ -8,24 +10,18 @@ const controller = {
     }
 
     productosUsuario = [];
-
-    for (let i = 0; i < localData.productos.length; i++) {
-      producto = localData.productos[i];
-
-      for (let i = 0; i < producto.comentarios.length; i++) {
-        infoComentario = producto.comentarios[i];
-
-        if (infoComentario.nombreUsuario == "Leo Messi") {
-          productosUsuario.push(producto);
-        }
-      }
-    }
-
-    res.render("profile", {
-      infoUsuario: localData.usuario,
+    let promesaUsuario = usuarios.findByPk(req.params.id, {
+      include: { all: true, nested: true }});
+    let promesaProducto = productos.findAll({where: [{userId: req.params.id}]});
+    Promise.all([promesaUsuario, promesaProducto])
+    .then(function([promesaUsuario, promesaProducto]){
+          res.render("profile", {
+      infoUsuario: promesaUsuario,
       title: "Profile",
-      productosUsuario: productosUsuario,
+      productosUsuario: promesaProducto,
     });
+    })
+    .catch((error) => console.log(error));
   },
   getRegister: function (req, res) {
     if (req.session.user) {

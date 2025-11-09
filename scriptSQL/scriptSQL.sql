@@ -51,14 +51,17 @@ CREATE TABLE comments (
 
 -- insert: users
 
-INSERT INTO users (email, password, profilePicture) VALUES
-("fede@gmail.com", "pass123", "fede.jpg"),
-("mili@gmail.com", "pass456", "mili.png"),
-("bauti@gmail.com", "pass789", "bauti.jpeg"),
-("cristianoronaldo@gmail.com", "pass111siuuu", "ronaldo.jpg"),
-("leomessi@gmail.com", "pass222", "messi.png");
+INSERT INTO users (id, username, email, password, profilePicture, birthdate, birthcity) VALUES
+(1, "fvoltes", "fede@gmail.com", "pass123", "fede.jpg", "2005-08-05", "Buenos Aires"),
+(2, "mpoitevin", "mili@gmail.com", "pass456", "mili.png", "2005-02-4", "Buenos Aires"),
+(3, "bgorchs", "bauti@gmail.com", "pass789", "bauti.jpeg", "2004-01-01", "Buenos Aires"),
+(4, "cristiano", "cristianoronaldo@gmail.com", "pass111siuuu", "ronaldo.jpg", "1985-04-01", "Lisboa"),
+(5, "leomessi", "leomessi@gmail.com", "pass222", "messi.png", "1987-6-24", "Rosario");
 
 -- insert: products
+
+-- Error Code: 1292. Incorrect date value: '-2008' for column 'birthdate' at row 1
+
 
 INSERT INTO products (userId, image, name, description) VALUES
 (1, "asadoArgentino.jpg", "Asado Argentino", "Corte de carne asada con chimichurri."),

@@ -1,9 +1,16 @@
-const localData = require("../localData/localData");
 const db = require("../database/models");
+const productos = db.Product
 
 const controller = {
   index: function (req, res) {
-    res.render("index", { title: "Express", products: localData.productos });
+    productos.findAll({
+    order: [['createdAt', 'DESC']],
+    limit: 40,
+    include: {all:true, nested:true}
+    })
+    .then ((productos) => {
+    res.render("index", { title: "Express", products: productos });
+    })
   },
 };
 
