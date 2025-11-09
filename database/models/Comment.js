@@ -40,13 +40,13 @@ module.exports = function (sequelize, DataTypes) {
   Comment.associate = function (models) {
     Comment.belongsTo(models.User, {
       as: "user",
-      foreignKey: "",
+      foreignKey: "userId",
       timestamps: false,
     });
 
     Comment.belongsTo(models.Product, {
       as: "product",
-      foreignKey: "",
+      foreignKey: "productId",
       timestamps: false,
     });
   };
