@@ -8,22 +8,24 @@ const controller = {
     if (!req.session.user) {
       return res.redirect("/users/login");
     }
+    res.render("profile", { title: "Profile" });
 
-    productosUsuario = [];
 
-    let promesaUsuario = usuarios.findByPk(req.params.id, {
-      include: { all: true, nested: true }});
+    //productosUsuario = [];
+
+    //let promesaUsuario = usuarios.findByPk(req.params.id, {
+      //include: { all: true, nested: true }});
       
-    let promesaProducto = productos.findAll({where: [{userId: req.params.id}]});
-    Promise.all([promesaUsuario, promesaProducto])
-      .then(function([promesaUsuario, promesaProducto]){
-        res.render("profile", {
-          infoUsuario: promesaUsuario,
-          title: "Profile",
-          productosUsuario: promesaProducto,
-      });
-    })
-    .catch((error) => console.log(error));
+    //let promesaProducto = productos.findAll({where: [{userId: req.params.id}]});
+    //Promise.all([promesaUsuario, promesaProducto])
+     // .then(function([promesaUsuario, promesaProducto]){
+       // res.render("profile", {
+         // infoUsuario: promesaUsuario,
+          //title: "Profile",
+          //productosUsuario: promesaProducto,
+      //});
+    //})
+    //.catch((error) => console.log(error));
   },
   getRegister: function (req, res) {
     if (req.session.user) {
@@ -90,12 +92,19 @@ const controller = {
               title: "Login",
               errors: "La contraseña ingresada es incorrecta",
             });
+          let profilePic = user.profilePicture;
+
+          if (!profilePic) {
+            profilePic = "fallback.png";
+          }
+
           req.session.user = {
             id: user.id,
             username: user.username,
             email: user.email,
-            profilePicture: user.profilePicture,
+            profilePicture: profilePic,
           };
+
 
           if (req.body.remember) {
             res.cookie("recordame", req.session.user, {
