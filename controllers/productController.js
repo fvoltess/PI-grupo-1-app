@@ -65,11 +65,12 @@ const controller = {
 
     products.findAll({
       where: [{name: {[op.like]: "%"+req.query.search+"%"}}],
-      include: [{all: true, nested: true}] ,
+      include: [{ association: "comments" }, { association: "user" }] ,
     })
       .then(function (productos) {
         //return res.send(productos)
-        res.render("search-results", {productos: productos});
+
+        res.render("search-results", {productos: productos, search: req.query.search});
       })
       .catch (function (error) {
         return res.send("error")
