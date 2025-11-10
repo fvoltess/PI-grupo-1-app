@@ -1,36 +1,41 @@
 const db = require("../database/models");
 const products = db.Product;
+const comments = db.Comment;
 const users = db.User;
 const op = db.Sequelize.Op;
 
 const controller = {
   product: function (req, res) {
     let id = req.params.id;
-
-    products.findByPk(id, {
-      include: [{ association: "comments" }, { association: "user" }],
-    })
-      .then(function (resultado) { 
+    products
+      .findByPk(id, {
+        include: [{ association: "comments" }, { association: "user" }],
+      })
+      .then(function (resultado) {
         if (resultado) {
           const commentsUsers = [];
 
           for (let i = 0; i < resultado.comments.length; i++) {
-            users.findByPk(resultado.comments[i].userId)
+            users
+              .findByPk(resultado.comments[i].userId)
               .then(function (result) {
                 commentsUsers.push(result.dataValues);
               })
               .catch(function (error) {
-                res.send("error")
-              })
+                res.send("error");
+              });
           }
           //return res.send(resultado)
-          return res.render("product", { product: resultado, commentsUsers: commentsUsers});
+          return res.render("product", {
+            product: resultado,
+            commentsUsers: commentsUsers,
+          });
         } else {
           return res.render("error");
         }
       })
       .catch(function (error) {
-        console.error(error)
+        console.error(error);
         //return res.render("error");
       });
   },
@@ -41,8 +46,6 @@ const controller = {
     res.render("product-add", { title: "Add Product" });
   },
   storeProduct: function (req, res) {
-
-
     products.create({
       name: req.body.nombre,
       description : req.body.descripcion,
@@ -54,31 +57,46 @@ const controller = {
       })
       .catch(function (error) {
         return res.send(error)
-        return res.render("error")
       });
   },
   editProduct: function (req, res) {
     if (!req.session.user) {
       return res.redirect("/users/login");
     }
-    res.render("product-edit", { title: "Edit Product" });
+    comments
+      .create({
+        productId: req.params.id,
+        userId: req.session.user.id,
+        comment: req.body.comment,
+      })
+      .then(function () {
+        res.redirect(`/products/id/${req.params.id}`);
+      })
+      .catch(function (error) {
+        res.render("error");
+      });
+
+    // res.render("product-edit", { title: "Edit Product" });
   },
   searchProduct: function (req, res) {
-
-    products.findAll({
-      where: [{name: {[op.like]: "%"+req.query.search+"%"}}],
-      include: [{ association: "comments" }, { association: "user" }] ,
-    })
+    products
+      .findAll({
+        where: [{ name: { [op.like]: "%" + req.query.search + "%" } }],
+        include: [{ association: "comments" }, { association: "user" }],
+      })
       .then(function (productos) {
         //return res.send(productos)
 
-        res.render("search-results", {productos: productos, search: req.query.search});
+        res.render("search-results", {
+          productos: productos,
+          search: req.query.search,
+        });
       })
-      .catch (function (error) {
-        return res.send("error")
+      .catch(function (error) {
+        return res.send("error");
         //res.render("error")
       });
-  }
+  },
 };
 
 module.exports = controller;

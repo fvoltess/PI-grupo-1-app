@@ -37,19 +37,14 @@
               alt=""
               class="product-detail-img"
             />
-            <p class="product-detail-description">
-              <%=product.description%>
-            </p>
+            <p class="product-detail-description"><%=product.description%></p>
           </article>
 
           <div class="col-12 col-lg-4">
             <section class="comments">
               <% for( let i = 0; i < product.comments.length; i++ ) { %>
               <article>
-                <img
-                  src="<%=product.comments[i].userId%>"
-                  alt=""
-                />
+                <img src="<%=product.comments[i].userId%>" alt="" />
                 <div class="data">
                   <p class="user">
                     <strong>
@@ -65,16 +60,17 @@
             </section>
             <form
               class="form"
-              action="/products/<%=product.id%>"
-              method="GET"
+              action="/products/product-edit/<%=product.id%>"
+              method="POST"
             >
               <input
                 class="form-input"
                 type="text"
-                value=""
+                name="comment"
+                id="comment"
                 placeholder="Agregar comentario"
               />
-              <button type="submit" class="buy-now-button">
+              <button type="submit" class="comment-button">
                 AGREGAR COMENTARIO
               </button>
             </form>

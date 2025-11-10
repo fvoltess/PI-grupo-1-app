@@ -42,7 +42,6 @@ app.use((req, res, next) => {
   next();
 });
 
-
 app.use("/", indexRouter);
 app.use("/products", productsRouter);
 app.use("/users", userRouter);
