@@ -43,8 +43,26 @@
         <div class="col-12">
           <h2 class="products-title">Mis productos</h2>
         </div>
+        <% if (productosUsuario && productosUsuario.length > 0) { %>
+  <% for (let i = 0; i < productosUsuario.length; i++) { %>
+    <div class="col-12 col-sm-6 col-lg-3">
+      <section class="product-box">
+        <a href="/products/product/<%= productosUsuario[i].id %>">
+          <figure class="product-box_image">
+            <img src="/images/products/<%= productosUsuario[i].image %>" alt="<%= productosUsuario[i].name %>" />
+          </figure>
+          <article class="product-box_data">
+            <h2><%= productosUsuario[i].name %></h2>
+            <p><%= productosUsuario[i].description %></p>
+          </article>
+        </a>
+      </section>
+    </div>
+  <% } %>
+<% } else { %>
+  <p class="col-12">Aún no tenés productos publicados.</p>
+<% } %>
 
-        <p class="col-12">Aun no tenes productos publicados.</p>
       </div>
     </div>
 
