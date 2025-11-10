@@ -45,18 +45,19 @@ const controller = {
         //return res.render("error");
       });
   },
-  addProduct: function (req, res) {
+  getAddProduct: function (req, res) {
     if (!req.session.user) {
       return res.redirect("/users/login");
     }
     res.render("product-add", { title: "Add Product" });
   },
-  getAddProduct: function (req, res) {
+  addProduct: function (req, res) {
     products
       .create({
         image: req.body.imagen,
         name: req.body.nombre,
         description: req.body.descripcion,
+        userId: req.session.user.id,
       })
       .then(function () {
         res.redirect("/");
@@ -64,6 +65,12 @@ const controller = {
       .catch(function (error) {
         return res.send(error);
       });
+  },
+  editProduct: function (req, res) {
+    if (!req.session.user) {
+      return res.redirect("/users/login");
+    }
+    res.render("product-edit");
   },
   comment: function (req, res) {
     if (!req.session.user) {

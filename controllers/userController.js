@@ -8,21 +8,33 @@ const controller = {
     if (!req.session.user) {
       return res.redirect("/users/login");
     }
-    productos
-      .findAll({ where: { userId: req.session.user.id } })
-      .then((productos) => {
-        if (productos.length === 0) {
+    usuarios
+      .findByPk(req.params.id, { include: [{ association: "products" }] })
+      .then((usuario) => {
+        if (usuario) {
+          console.log(usuario);
+          // res.send(usuario);
           return res.render("profile", {
             title: "Profile",
-            productosUsuario: null,
+            usuario: usuario,
           });
         }
-        return res.render("profile", {
-          title: "Profile",
-          productosUsuario: productos,
-        });
-      })
-      .catch((error) => console.log(error));
+      });
+    // productos
+    //   .findAll({ where: { userId: req.params.id } })
+    //   .then((productos) => {
+    //     if (productos.length === 0) {
+    //       return res.render("profile", {
+    //         title: "Profile",
+    //         productosUsuario: null,
+    //       });
+    //     }
+    //     return res.render("profile", {
+    //       title: "Profile",
+    //       productosUsuario: productos,
+    //     });
+    //   })
+    //   .catch((error) => console.log(error));
   },
   getRegister: function (req, res) {
     if (req.session.user) {
