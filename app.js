@@ -42,14 +42,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// esta pieza de codigo la vamos a eliminar antes de entregar, es solo para debuggear
-app.use((req, res, next) => {
-  console.log("🔍 CHEKS - res.locals:", res.locals);
-  console.log("🔍 CHEKS - req.session:", req.session);
-  console.log("🔍 CHEKS - req.cookies:", req.cookies);
-
-  next();
-});
 
 app.use("/", indexRouter);
 app.use("/products", productsRouter);

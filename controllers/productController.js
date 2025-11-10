@@ -1,5 +1,6 @@
 const db = require("../database/models");
 const products = db.Product;
+const users = db.User;
 const op = db.Sequelize.Op;
 
 const controller = {
@@ -9,16 +10,28 @@ const controller = {
     products.findByPk(id, {
       include: [{ association: "comments" }, { association: "user" }],
     })
-      .then(function (resultado) {
+      .then(function (resultado) { 
         if (resultado) {
-          // return res.send(resultado)
-          return res.render("product", { product: resultado });
+          const commentsUsers = [];
+
+          for (let i = 0; i < resultado.comments.length; i++) {
+            users.findByPk(resultado.comments[i].userId)
+              .then(function (result) {
+                commentsUsers.push(result.dataValues);
+              })
+              .catch(function (error) {
+                res.send("error")
+              })
+          }
+          //return res.send(resultado)
+          return res.render("product", { product: resultado, commentsUsers: commentsUsers});
         } else {
           return res.render("error");
         }
       })
       .catch(function (error) {
-        return res.render("error");
+        console.error(error)
+        //return res.render("error");
       });
   },
   addProduct: function (req, res) {
