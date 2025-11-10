@@ -60,8 +60,6 @@ INSERT INTO users (id, username, email, password, profilePicture, birthdate, bir
 
 -- insert: products
 
--- Error Code: 1292. Incorrect date value: '-2008' for column 'birthdate' at row 1
-
 
 INSERT INTO products (userId, image, name, description) VALUES
 (1, "asadoArgentino.jpg", "Asado Argentino", "Corte de carne asada con chimichurri."),
