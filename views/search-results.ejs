@@ -16,28 +16,27 @@
   </head>
 
   <body>
-    <%- include("./partials/header", {isLogged: true, nombreUsuario: `Leo
-    Messi`}) %>
+    <%- include("./partials/header") %>
 
     <div class="container products-wrapper">
       <div class="row">
         <div class="col-12">
           <h2 class="products-title">Resultados de búsqueda</h2>
         </div>
-        <% for(let i = 0; i < products.length; i++) { %>
+        <% for(let i = 0; i < productos.length; i++) { %>
         <div class="col-12 col-sm-6 col-lg-3">
           <section class="product-box">
-            <a href="/products/<%=products[i].id%>">
+            <a href="/products/<%=productos[i].id%>">
               <figure class="product-box_image">
                 <img
-                  src="<%= products[i].imagen %>"
-                  alt="<%= products[i].nombre %>"
+                  src="<%= productos[i].image %>"
+                  alt="<%= productos[i].name %>"
                 />
               </figure>
               <article class="product-box_data">
-                <h2><%= products[i].nombre %></h2>
-                <p><%= products[i].descripcion %></p>
-                <p>Comentarios: <%= products[i].comentarios.length %></p>
+                <h2><%= productos[i].name %></h2>
+                <p><%= productos[i].description %></p>
+                <p>Comentarios: <%= productos[i].comments.length %></p>
               </article>
             </a>
           </section>

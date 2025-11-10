@@ -10,16 +10,18 @@ const controller = {
     }
 
     productosUsuario = [];
+
     let promesaUsuario = usuarios.findByPk(req.params.id, {
       include: { all: true, nested: true }});
+      
     let promesaProducto = productos.findAll({where: [{userId: req.params.id}]});
     Promise.all([promesaUsuario, promesaProducto])
-    .then(function([promesaUsuario, promesaProducto]){
-          res.render("profile", {
-      infoUsuario: promesaUsuario,
-      title: "Profile",
-      productosUsuario: promesaProducto,
-    });
+      .then(function([promesaUsuario, promesaProducto]){
+        res.render("profile", {
+          infoUsuario: promesaUsuario,
+          title: "Profile",
+          productosUsuario: promesaProducto,
+      });
     })
     .catch((error) => console.log(error));
   },

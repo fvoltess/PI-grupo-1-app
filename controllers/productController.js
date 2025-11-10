@@ -27,6 +27,19 @@ const controller = {
     }
     res.render("product-add", { title: "Add Product" });
   },
+  storeProduct: function (req, res) {
+    products.create({
+      image : req.body.imagen,
+      name: req.body.nombre,
+      description : req.body.descripcion,
+    })
+      .then(function() {
+        res.redirect('/')
+      })
+      .catch(function (error) {
+        res.send(error)
+      });
+  },
   editProduct: function (req, res) {
     if (!req.session.user) {
       return res.redirect("/users/login");
@@ -34,19 +47,18 @@ const controller = {
     res.render("product-edit", { title: "Edit Product" });
   },
   searchProduct: function (req, res) {
-    let search = req.query.search;
-
     products.findAll({
-      where: [{name: {[op.like]: "%" + search + "%"}}]
+      where: [{name: {[op.like]: "%"+req.query.search+"%"}}],
+      include: [{all: true, nested: false, association: "comments"}] ,
     })
-      .then(function(resultados){
-        res.send(resultados)
-        // res.render("search-results", {productos: resultados})
+      .then(function (productos) {
+        res.send(productos)
+        //res.render("search-results", {productos: productos});
       })
-      .catch(function(error){
-        res.send(error)
-        // res.render("error")
-      })
+      .catch (function (error) {
+        res.send("error")
+        //res.render("error")
+      });
   },
 };
 

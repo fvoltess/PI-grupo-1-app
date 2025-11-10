@@ -19,8 +19,7 @@
   </head>
 
   <body class="product-add-body">
-    <%- include("./partials/header", {isLogged: true, nombreUsuario: `Leo
-    Messi`}) %>
+    <%- include("./partials/header") %>
 
     <div class="container products-wrapper">
       <div class="row">
@@ -31,15 +30,14 @@
           </p>
         </div>
         <div class="form-container product-add">
-          <form action="/products/product-add" method="GET">
+          <form action="/products/product-add" method="POST">
             <label for="nombre">Nombre del producto</label>
             <input
               type="text"
               class="form-control"
               id="nombre"
               name="nombre"
-              r
-              equired
+              required
             />
             <label for="descripcion">Descripción</label>
             <input
