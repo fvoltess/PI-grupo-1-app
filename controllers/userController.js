@@ -10,20 +10,19 @@ const controller = {
     }
     res.render("profile", { title: "Profile" });
 
-
     //productosUsuario = [];
 
     //let promesaUsuario = usuarios.findByPk(req.params.id, {
-      //include: { all: true, nested: true }});
-      
+    //include: { all: true, nested: true }});
+
     //let promesaProducto = productos.findAll({where: [{userId: req.params.id}]});
     //Promise.all([promesaUsuario, promesaProducto])
-     // .then(function([promesaUsuario, promesaProducto]){
-       // res.render("profile", {
-         // infoUsuario: promesaUsuario,
-          //title: "Profile",
-          //productosUsuario: promesaProducto,
-      //});
+    // .then(function([promesaUsuario, promesaProducto]){
+    // res.render("profile", {
+    // infoUsuario: promesaUsuario,
+    //title: "Profile",
+    //productosUsuario: promesaProducto,
+    //});
     //})
     //.catch((error) => console.log(error));
   },
@@ -65,6 +64,7 @@ const controller = {
       db.User.create({
         email: req.body.email,
         username: req.body.username,
+        profilePicture: req.body.profilePicture,
         birthdate: req.body.birthdate,
         birthcity: req.body.birthcity,
         password: hashedPassword,
@@ -104,7 +104,6 @@ const controller = {
             email: user.email,
             profilePicture: profilePic,
           };
-
 
           if (req.body.remember) {
             res.cookie("recordame", req.session.user, {

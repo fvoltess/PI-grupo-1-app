@@ -7,14 +7,11 @@
     <link width="" rel="shortcut icon" href="/images/favicon2.png" />
 
     <title>Mordisco</title>
-    <!-- Font Awesome Stylesheet -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
     />
-
     <link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css" />
-
     <link rel="stylesheet" href="/stylesheets/app.css" />
   </head>
 
@@ -44,15 +41,18 @@
             <section class="comments">
               <% for( let i = 0; i < product.comments.length; i++ ) { %>
               <article>
-                <img src="<%=product.comments[i].userId%>" alt="" />
+                <img
+                  src="/images/users/<%=product.comments[i].user.profilePicture%>"
+                  alt=""
+                />
                 <div class="data">
                   <p class="user">
                     <strong>
-                      <a href="/users/profile"
-                        ><%=product.comments[i].userId%>
+                      <a href="/users/profile/<%=product.comments[i].user.id%>">
+                        <%=product.comments[i].user.username%>
                       </a>
                     </strong>
-                    <%=product.comments[i].comment%>
+                    <%=product.comments[i].comment%>"
                   </p>
                 </div>
               </article>
@@ -60,7 +60,7 @@
             </section>
             <form
               class="form"
-              action="/products/product-edit/<%=product.id%>"
+              action="/products/comment/<%=product.id%>"
               method="POST"
             >
               <input
@@ -79,9 +79,6 @@
         </div>
       </div>
     </div>
-    <!-- /product detail -->
-
     <%- include("./partials/footer") %>
-    <!-- /footer -->
   </body>
 </html>

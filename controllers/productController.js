@@ -5,11 +5,17 @@ const users = db.User;
 const op = db.Sequelize.Op;
 
 const controller = {
-  product: function (req, res) {
+  getProduct: function (req, res) {
     let id = req.params.id;
     products
       .findByPk(id, {
-        include: [{ association: "comments" }, { association: "user" }],
+        include: [
+          {
+            association: "comments",
+            include: [{ association: "user" }],
+          },
+          { association: "user" },
+        ],
       })
       .then(function (resultado) {
         if (resultado) {
@@ -46,7 +52,7 @@ const controller = {
     }
     res.render("product-add", { title: "Add Product" });
   },
-  storeProduct: function (req, res) {
+  getAddProduct: function (req, res) {
     products
       .create({
         image: req.body.imagen,
@@ -60,10 +66,13 @@ const controller = {
         res.render("error");
       });
   },
-  editProduct: function (req, res) {
+  comment: function (req, res) {
     if (!req.session.user) {
       return res.redirect("/users/login");
     }
+    console.log("🔍 Usuario en sesión:", req.session.user); 
+    console.log("🔍 userId que voy a guardar:", req.session.user.id);
+
     comments
       .create({
         productId: req.params.id,
@@ -74,7 +83,7 @@ const controller = {
         res.redirect(`/products/id/${req.params.id}`);
       })
       .catch(function (error) {
-        res.render("error");
+        res.render("error", { error: error });
       });
 
     // res.render("product-edit", { title: "Edit Product" });

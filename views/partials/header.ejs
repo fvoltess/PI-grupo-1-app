@@ -50,7 +50,7 @@
           <ul class="left-navbar">
             <li><a href="/index">Todos los productos</a></li>
             <% if (locals.user) { %>
-            <li><a href="/products/product-add">Cargar producto</a></li>
+            <li><a href="/products/add">Cargar producto</a></li>
             <% } %>
           </ul>
           <ul class="right-navbar">
@@ -67,7 +67,8 @@
             </li>
             <% } %> <% if (locals.user) { %>
             <li>
-              <a href="/users/profile"> <!-- /user/profile/<=User.id>-->
+              <a href="/users/profile">
+                <!-- /user/profile/<=User.id>-->
                 <% if (locals.user) { %> <%= locals.user.username %>
                 <i class="fas fa-user"></i> <% } else { %> Nombre de usuario
                 <i class="fas fa-user"></i>
