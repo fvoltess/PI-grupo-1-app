@@ -35,24 +35,26 @@ const controller = {
       });
   },
   addProduct: function (req, res) {
-
-    return res.send("test")
     if (!req.session.user) {
       return res.redirect("/users/login");
     }
     res.render("product-add", { title: "Add Product" });
   },
   storeProduct: function (req, res) {
+
+
     products.create({
-      image : req.body.imagen,
       name: req.body.nombre,
       description : req.body.descripcion,
+      image: req.body.imagen,
+      userId: req.session.user.id,
     })
-      .then(function() {
-        res.redirect('/')
+      .then(function(resultado) {
+        return res.redirect('/')
       })
       .catch(function (error) {
-        res.render("error")
+        return res.send(error)
+        return res.render("error")
       });
   },
   editProduct: function (req, res) {
