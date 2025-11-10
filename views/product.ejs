@@ -43,19 +43,15 @@
           <div class="col-12 col-lg-4">
             <section class="comments">
               <% for( let i = 0; i < product.comments.length; i++ ) { %>
-              <article>
-                <img src="<%=product.comments[i].userId%>" alt="" />
-                <div class="data">
-                  <p class="user">
-                    <strong>
-                      <a href="/users/profile"
-                        ><%=product.comments[i].userId%>
-                      </a>
-                    </strong>
-                    <%=product.comments[i].comment%>
-                  </p>
-                </div>
-              </article>
+                <article>
+                  <img src="<%=product.comments[i].userId%>" alt="" />
+                  <div class="data">
+                    <p class="user">
+                      <strong><a href="/users/profile"><%=product.comments[i].userId%></a></strong>
+                      <%=product.comments[i].comment%>
+                    </p>
+                  </div>
+                </article>
               <% } %>
             </section>
             <form
@@ -79,9 +75,7 @@
         </div>
       </div>
     </div>
-    <!-- /product detail -->
 
     <%- include("./partials/footer") %>
-    <!-- /footer -->
   </body>
 </html>

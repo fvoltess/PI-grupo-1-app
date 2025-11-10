@@ -6,7 +6,6 @@
     <link width="" rel="shortcut icon" href="/images/favicon2.png" />
 
     <title>Mordisco</title>
-    <!-- Font Awesome Stylesheet -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
@@ -18,16 +17,13 @@
   </head>
 
   <body class="register-body">
-    <%- include("./partials/header", {isLogged: false}) %>
+    <%- include("./partials/header") %>
 
-    <!-- Novedades -->
     <div class="container products-wrapper">
       <div class="row">
         <div class="col-12 headers-container">
           <h2 class="products-title">Registrate</h2>
-          <p class="products-subtitle">
-            ¡Accede a todas las funcionalidades de Mordisco!
-          </p>
+          <p class="products-subtitle">¡Accede a todas las funcionalidades de Mordisco!</p>
         </div>
         <div class="form-container">
           <form action="/users/register" method="POST" class="auth-form">
@@ -85,9 +81,9 @@
               required
             />
             <% if (errors) { %>
-            <div class="error-messages">
-              <p>⚠️ <%= errors %> ⚠️</p>
-            </div>
+              <div class="error-messages">
+                <p>⚠️ <%= errors %> ⚠️</p>
+              </div>
             <% } %>
             <input type="submit" value="Registrarse" id="submit-btn" />
           </form>
