@@ -42,8 +42,9 @@
                 <article class="product-box_data">
                   <h2><%= productos[i].name %></h2>
                   <p><%= productos[i].description %></p>
-                  <p>Comentarios: <%= productos[i].comments.length %></p>
-                  <p>Usuario: <%= productos[i].user.username %></p>
+                  <p><strong>Comentarios: </strong><%= productos[i].comments.length %></p>
+                  <p>
+                    <strong>Usuario: </strong><%= productos[i].user.username %></p>
                 </article>
               </a>
             </section>

@@ -48,6 +48,9 @@
 
         <nav class="main-navbar">
           <ul class="left-navbar">
+            <% if (locals.user) { %>
+              <li><strong> Hola <%= locals.user.username %>!</strong></li>
+            <% } %>
             <li><a href="/index">Todos los productos</a></li>
             <% if (locals.user) { %>
             <li><a href="/products/add">Cargar producto</a></li>
