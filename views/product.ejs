@@ -24,7 +24,7 @@
 
     <div class="container products-wrapper">
       <div class="d-flex align-items-center">
-        <h2 class="products-title"><%=informacion.nombre%></h2>
+        <h2 class="products-title"><%=product.name%></h2>
         <p class="product-detail-description">
           <a href="/products/product-edit">Editar</a>
         </p>
@@ -34,31 +34,31 @@
         <div class="row">
           <article class="col-12 col-lg-8 product-detail-info">
             <img
-              src="<%=informacion.imagen%>"
+              src="/public/images/products/<%=product.image%>"
               alt=""
               class="product-detail-img"
             />
             <p class="product-detail-description">
-              <%=informacion.descripcion%>
+              <%=product.description%>
             </p>
           </article>
 
           <div class="col-12 col-lg-4">
             <section class="comments">
-              <% for( let i = 0; i < informacion.comentarios.length; i++ ) { %>
+              <% for( let i = 0; i < product.comments.length; i++ ) { %>
               <article>
                 <img
-                  src="<%=informacion.comentarios[i].imagenUsuario%>"
+                  src="<%=product.comments[i].userId%>"
                   alt=""
                 />
                 <div class="data">
                   <p class="user">
                     <strong>
                       <a href="/users/profile"
-                        ><%=informacion.comentarios[i].nombreUsuario%>
+                        ><%=product.comments[i].userId%>
                       </a>
                     </strong>
-                    <%=informacion.comentarios[i].texto%>
+                    <%=product.comments[i].comment%>
                   </p>
                 </div>
               </article>
@@ -66,7 +66,7 @@
             </section>
             <form
               class="form"
-              action="/products/<%=informacion.id%>"
+              action="/products/<%=product.id%>"
               method="GET"
             >
               <input

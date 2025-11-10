@@ -1,16 +1,25 @@
-const comidas = require("../localData/localData");
+const db = require("../database/models");
+const products = db.Product;
+const op = db.Sequelize.Op;
 
 const controller = {
   product: function (req, res) {
-    let infoProducto = [];
+    let id = req.params.id;
 
-    for (let i = 0; i < comidas.productos.length; i++) {
-      if (req.params.id == comidas.productos[i].id) {
-        infoProducto.push(comidas.productos[i]);
-      }
-    }
-
-    res.render("product", { informacion: infoProducto[0] });
+    products.findByPk(id, {
+      include: [{ association: "comments" }, { association: "user" }],
+    })
+      .then(function (resultado) {
+        if (resultado) {
+          // return res.send(resultado)
+          return res.render("product", { product: resultado });
+        } else {
+          return res.render("error");
+        }
+      })
+      .catch(function (error) {
+        return res.render("error");
+      });
   },
   addProduct: function (req, res) {
     if (!req.session.user) {
