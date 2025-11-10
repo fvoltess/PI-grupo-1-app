@@ -22,6 +22,8 @@ const controller = {
       });
   },
   addProduct: function (req, res) {
+
+    return res.send("test")
     if (!req.session.user) {
       return res.redirect("/users/login");
     }
@@ -37,7 +39,7 @@ const controller = {
         res.redirect('/')
       })
       .catch(function (error) {
-        res.send(error)
+        res.render("error")
       });
   },
   editProduct: function (req, res) {
@@ -47,19 +49,20 @@ const controller = {
     res.render("product-edit", { title: "Edit Product" });
   },
   searchProduct: function (req, res) {
+
     products.findAll({
       where: [{name: {[op.like]: "%"+req.query.search+"%"}}],
-      include: [{all: true, nested: false, association: "comments"}] ,
+      include: [{all: true, nested: true}] ,
     })
       .then(function (productos) {
-        res.send(productos)
-        //res.render("search-results", {productos: productos});
+        //return res.send(productos)
+        res.render("search-results", {productos: productos});
       })
       .catch (function (error) {
-        res.send("error")
+        return res.send("error")
         //res.render("error")
       });
-  },
+  }
 };
 
 module.exports = controller;
