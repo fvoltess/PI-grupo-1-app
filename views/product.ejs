@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
-  <!-- Include Head -->
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link width="" rel="shortcut icon" href="/images/favicon2.png" />
 
     <title>Mordisco</title>
-    <!-- Font Awesome Stylesheet -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
     />
-
     <link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css" />
-
     <link rel="stylesheet" href="/stylesheets/app.css" />
   </head>
 
@@ -43,20 +39,27 @@
           <div class="col-12 col-lg-4">
             <section class="comments">
               <% for( let i = 0; i < product.comments.length; i++ ) { %>
-                <article>
-                  <img src="<%=product.comments[i].userId%>" alt="" />
-                  <div class="data">
-                    <p class="user">
-                      <strong><a href="/users/profile"><%=product.comments[i].userId%></a></strong>
-                      <%=product.comments[i].comment%>
-                    </p>
-                  </div>
-                </article>
+              <article>
+                <img
+                  src="/images/users/<%=product.comments[i].user.profilePicture%>"
+                  alt=""
+                />
+                <div class="data">
+                  <p class="user">
+                    <strong>
+                      <a href="/users/profile/<%=product.comments[i].user.id%>">
+                        <%=product.comments[i].user.username%>
+                      </a>
+                    </strong>
+                    <%=product.comments[i].comment%>"
+                  </p>
+                </div>
+              </article>
               <% } %>
             </section>
             <form
               class="form"
-              action="/products/product-edit/<%=product.id%>"
+              action="/products/comment/<%=product.id%>"
               method="POST"
             >
               <input
@@ -75,7 +78,7 @@
         </div>
       </div>
     </div>
-
+    
     <%- include("./partials/footer") %>
   </body>
 </html>
