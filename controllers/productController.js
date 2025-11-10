@@ -1,26 +1,42 @@
 const db = require("../database/models");
 const products = db.Product;
 const comments = db.Comment;
+const users = db.User;
 const op = db.Sequelize.Op;
 
 const controller = {
   product: function (req, res) {
     let id = req.params.id;
-
     products
       .findByPk(id, {
         include: [{ association: "comments" }, { association: "user" }],
       })
       .then(function (resultado) {
         if (resultado) {
-          // return res.send(resultado)
-          return res.render("product", { product: resultado });
+          const commentsUsers = [];
+
+          for (let i = 0; i < resultado.comments.length; i++) {
+            users
+              .findByPk(resultado.comments[i].userId)
+              .then(function (result) {
+                commentsUsers.push(result.dataValues);
+              })
+              .catch(function (error) {
+                res.send("error");
+              });
+          }
+          //return res.send(resultado)
+          return res.render("product", {
+            product: resultado,
+            commentsUsers: commentsUsers,
+          });
         } else {
           return res.render("error");
         }
       })
       .catch(function (error) {
-        return res.render("error");
+        console.error(error);
+        //return res.render("error");
       });
   },
   addProduct: function (req, res) {
@@ -67,11 +83,15 @@ const controller = {
     products
       .findAll({
         where: [{ name: { [op.like]: "%" + req.query.search + "%" } }],
-        include: [{ all: true, nested: true }],
+        include: [{ association: "comments" }, { association: "user" }],
       })
       .then(function (productos) {
         //return res.send(productos)
-        res.render("search-results", { productos: productos });
+
+        res.render("search-results", {
+          productos: productos,
+          search: req.query.search,
+        });
       })
       .catch(function (error) {
         return res.send("error");
