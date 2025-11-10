@@ -34,16 +34,19 @@ const controller = {
     res.render("product-edit", { title: "Edit Product" });
   },
   searchProduct: function (req, res) {
-    const searchedProducts = [];
+    let search = req.query.search;
 
-    for (let i = 0; i < 4; i++) {
-      searchedProducts.push(comidas.productos[i]);
-    }
-
-    res.render("search-results", {
-      title: "Search Product",
-      products: searchedProducts,
-    });
+    products.findAll({
+      where: [{name: {[op.like]: "%" + search + "%"}}]
+    })
+      .then(function(resultados){
+        res.send(resultados)
+        // res.render("search-results", {productos: resultados})
+      })
+      .catch(function(error){
+        res.send(error)
+        // res.render("error")
+      })
   },
 };
 
