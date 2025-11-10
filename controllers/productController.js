@@ -46,7 +46,6 @@ const controller = {
       });
   },
   addProduct: function (req, res) {
-    return res.send("test");
     if (!req.session.user) {
       return res.redirect("/users/login");
     }
@@ -63,14 +62,14 @@ const controller = {
         res.redirect("/");
       })
       .catch(function (error) {
-        res.render("error");
+        return res.send(error);
       });
   },
   comment: function (req, res) {
     if (!req.session.user) {
       return res.redirect("/users/login");
     }
-    console.log("🔍 Usuario en sesión:", req.session.user); 
+    console.log("🔍 Usuario en sesión:", req.session.user);
     console.log("🔍 userId que voy a guardar:", req.session.user.id);
 
     comments
