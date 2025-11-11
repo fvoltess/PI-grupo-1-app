@@ -9,7 +9,9 @@ const controller = {
       return res.redirect("/users/login");
     }
     usuarios
-      .findByPk(req.params.id, { include: [{ association: "products" }] })
+      .findByPk(req.params.id, { 
+        include: [{ association: "products" }] 
+      })
       .then((usuario) => {
         if (usuario) {
           return res.render("profile", {
@@ -19,13 +21,17 @@ const controller = {
         } else {
           return res.render("error", { error: "Usuario no encontrado" });
         }
+      })
+      .catch((error) => {
+        return res.render("error");
       });
   },
   getRegister: (req, res) => {
     if (req.session.user) {
       return res.redirect(`/users/profile/${req.session.user.id}`);
+    } else {
+      return res.render("register", { title: "Register", errors: null });
     }
-    res.render("register", { title: "Register", errors: null });
   },
   register: (req, res) => {
     if (req.body.password.length < 3) {

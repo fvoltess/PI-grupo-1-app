@@ -5,12 +5,13 @@ const controller = {
   index: (req, res) => {
     productos
       .findAll({
-        order: [["createdAt", "DESC"]],
-        limit: 40,
-        include: { all: true, nested: true },
+        include: [{association: "user"}, {association: "comments"}],
       })
       .then((productos) => {
-        res.render("index", { title: "Express", products: productos });
+        return res.render("index", { title: "Express", products: productos });
+      })
+      .catch((error) => {
+        return res.render("error");
       });
   },
 };
