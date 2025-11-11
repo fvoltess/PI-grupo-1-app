@@ -68,14 +68,11 @@
                 >Ingresá <i class="fas fa-sign-in-alt"></i
               ></a>
             </li>
-            <% } %> <% if (locals.user) { %>
+            <% } else { %>
             <li>
               <a href="/users/profile/<%= locals.user.id %>">
-                <!-- /user/profile/<=User.id>-->
-                <% if (locals.user) { %> <%= locals.user.username %>
-                <i class="fas fa-user"></i> <% } else { %> Nombre de usuario
+                <%= locals.user.username %>
                 <i class="fas fa-user"></i>
-                <% } %>
               </a>
             </li>
             <li>

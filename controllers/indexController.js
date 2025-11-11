@@ -8,7 +8,7 @@ const controller = {
         include: [{ association: "user" }, { association: "comments" }],
       })
       .then((productos) => {
-        res.render("index", { title: "Express", products: productos });
+        return res.render("index", { title: "Home", products: productos });
       })
       .catch((error) => {
         return res.render("error", { error: error });

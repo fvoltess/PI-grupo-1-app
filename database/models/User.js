@@ -48,13 +48,11 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Comment, {
       as: "comments",
       foreignKey: "userId",
-      timestamps: true,
     });
 
     User.hasMany(models.Product, {
       as: "products",
       foreignKey: "userId",
-      timestamps: true,
     });
   };
 

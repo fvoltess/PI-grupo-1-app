@@ -34,7 +34,7 @@ const controller = {
     if (!req.session.user) {
       return res.redirect("/users/login");
     }
-    res.render("product-add", { title: "Add Product" });
+    return res.render("product-add", { title: "Add Product" });
   },
   addProduct: (req, res) => {
     if (!req.session.user) {
@@ -48,7 +48,7 @@ const controller = {
         userId: req.session.user.id,
       })
       .then(() => {
-        res.redirect("/");
+        return res.redirect("/");
       })
       .catch((error) => {
         return res.send(error);
@@ -58,7 +58,7 @@ const controller = {
     if (!req.session.user) {
       return res.redirect("/users/login");
     }
-    res.render("product-edit");
+    return res.render("product-edit");
   },
   comment: (req, res) => {
     if (!req.session.user) {
@@ -72,10 +72,10 @@ const controller = {
         comment: req.body.comment,
       })
       .then(() => {
-        res.redirect(`/products/id/${req.params.id}`);
+        return res.redirect(`/products/id/${req.params.id}`);
       })
       .catch((error) => {
-        res.render("error", { error: error });
+        return res.render("error", { error: error });
       });
   },
   searchProduct: (req, res) => {
@@ -85,7 +85,7 @@ const controller = {
         include: [{ association: "comments" }, { association: "user" }],
       })
       .then((productos) => {
-        res.render("search-results", {
+        return res.render("search-results", {
           productos: productos,
           search: req.query.search,
         });

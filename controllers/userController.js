@@ -9,8 +9,8 @@ const controller = {
       return res.redirect("/users/login");
     }
     usuarios
-      .findByPk(req.params.id, { 
-        include: [{ association: "products" }] 
+      .findByPk(req.params.id, {
+        include: [{ association: "products" }],
       })
       .then((usuario) => {
         if (usuario) {
@@ -42,7 +42,7 @@ const controller = {
     }
 
     usuarios
-      .findOne({where: {email: req.body.email}})
+      .findOne({ where: { email: req.body.email } })
       .then((userExists) => {
         if (userExists) {
           return res.render("register", {
@@ -66,7 +66,7 @@ const controller = {
             username: req.body.username,
             profilePicture: req.body.profilePicture,
             birthdate: req.body.birthdate,
-            birthcity: req.body.birthcity,
+            birthplace: req.body.birthplace,
             password: hashedPassword,
           })
           .then(() => {
@@ -75,10 +75,10 @@ const controller = {
           .catch((error) => {
             return res.render("error");
           });
-    })
-    .catch((error) => {
-      return res.render("error");
-    });
+      })
+      .catch((error) => {
+        return res.render("error");
+      });
   },
   getLogin: (req, res) => {
     if (req.session.user) {
@@ -89,7 +89,7 @@ const controller = {
   },
   login: (req, res) => {
     usuarios
-      .findOne({where: { email: req.body.email }})
+      .findOne({ where: { email: req.body.email } })
       .then((user) => {
         if (user) {
           if (!bcrypt.compareSync(req.body.password, user.password))
@@ -97,7 +97,7 @@ const controller = {
               title: "Login",
               errors: "La contraseña ingresada es incorrecta",
             });
-          
+
           let profilePic = user.profilePicture;
           if (!profilePic) {
             profilePic = "fallback.png";
@@ -136,4 +136,3 @@ const controller = {
 };
 
 module.exports = controller;
-
