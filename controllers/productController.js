@@ -5,7 +5,7 @@ const users = db.User;
 const op = db.Sequelize.Op;
 
 const controller = {
-  getProduct: function (req, res) {
+  getProduct: (req, res) => {
     let id = req.params.id;
     products
       .findByPk(id, {
@@ -17,17 +17,17 @@ const controller = {
           { association: "user" },
         ],
       })
-      .then(function (resultado) {
+      .then((resultado) => {
         if (resultado) {
           const commentsUsers = [];
 
           for (let i = 0; i < resultado.comments.length; i++) {
             users
               .findByPk(resultado.comments[i].userId)
-              .then(function (result) {
+              .then((result) => {
                 commentsUsers.push(result.dataValues);
               })
-              .catch(function (error) {
+              .catch((error) => {
                 res.send("error");
               });
           }
@@ -40,18 +40,18 @@ const controller = {
           return res.render("error");
         }
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.error(error);
         //return res.render("error");
       });
   },
-  getAddProduct: function (req, res) {
+  getAddProduct: (req, res) => {
     if (!req.session.user) {
       return res.redirect("/users/login");
     }
     res.render("product-add", { title: "Add Product" });
   },
-  addProduct: function (req, res) {
+  addProduct: (req, res) => {
     products
       .create({
         image: req.body.imagen,
@@ -59,20 +59,20 @@ const controller = {
         description: req.body.descripcion,
         userId: req.session.user.id,
       })
-      .then(function () {
+      .then(() => {
         res.redirect("/");
       })
-      .catch(function (error) {
+      .catch((error) => {
         return res.send(error);
       });
   },
-  editProduct: function (req, res) {
+  editProduct: (req, res) => {
     if (!req.session.user) {
       return res.redirect("/users/login");
     }
     res.render("product-edit");
   },
-  comment: function (req, res) {
+  comment: (req, res) => {
     if (!req.session.user) {
       return res.redirect("/users/login");
     }
@@ -85,22 +85,22 @@ const controller = {
         userId: req.session.user.id,
         comment: req.body.comment,
       })
-      .then(function () {
+      .then(() => {
         res.redirect(`/products/id/${req.params.id}`);
       })
-      .catch(function (error) {
+      .catch((error) => {
         res.render("error", { error: error });
       });
 
     // res.render("product-edit", { title: "Edit Product" });
   },
-  searchProduct: function (req, res) {
+  searchProduct: (req, res) => {
     products
       .findAll({
         where: [{ name: { [op.like]: "%" + req.query.search + "%" } }],
         include: [{ association: "comments" }, { association: "user" }],
       })
-      .then(function (productos) {
+      .then((productos) => {
         //return res.send(productos)
 
         res.render("search-results", {
@@ -108,7 +108,7 @@ const controller = {
           search: req.query.search,
         });
       })
-      .catch(function (error) {
+      .catch((error) => {
         return res.send("error");
         //res.render("error")
       });

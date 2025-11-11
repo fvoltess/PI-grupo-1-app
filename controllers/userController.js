@@ -4,7 +4,7 @@ const usuarios = db.User;
 const productos = db.Product;
 
 const controller = {
-  profile: function (req, res) {
+  profile: (req, res) => {
     if (!req.session.user) {
       return res.redirect("/users/login");
     }
@@ -36,13 +36,13 @@ const controller = {
     //   })
     //   .catch((error) => console.log(error));
   },
-  getRegister: function (req, res) {
+  getRegister: (req, res) => {
     if (req.session.user) {
       return res.redirect("/users/profile");
     }
     res.render("register", { title: "Register", errors: null });
   },
-  register: function (req, res) {
+  register: (req, res) => {
     if (req.body.password.length < 3) {
       return res.render("register", {
         title: "Register",
@@ -85,13 +85,13 @@ const controller = {
         .catch((error) => console.log(error));
     });
   },
-  getLogin: function (req, res) {
+  getLogin: (req, res) => {
     if (req.session.user) {
       return res.redirect("/users/profile");
     }
     res.render("login", { title: "Login", errors: null });
   },
-  login: function (req, res) {
+  login: (req, res) => {
     db.User.findOne({
       where: { email: req.body.email },
     })
@@ -132,7 +132,7 @@ const controller = {
       })
       .catch((error) => console.error(error));
   },
-  logout: function (req, res) {
+  logout: (req, res) => {
     req.session.destroy();
     res.clearCookie("recordame");
     res.redirect("/users/login");

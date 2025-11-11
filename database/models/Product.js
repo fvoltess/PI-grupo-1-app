@@ -1,4 +1,4 @@
-module.exports = function (sequelize, DataTypes) {
+module.exports = (sequelize, DataTypes) => {
   const alias = "Product";
 
   const columns = {
@@ -30,7 +30,7 @@ module.exports = function (sequelize, DataTypes) {
 
   const Product = sequelize.define(alias, columns, config);
 
-  Product.associate = function (models) {
+  Product.associate = (models) => {
     Product.belongsTo(models.User, {
       as: "user",
       foreignKey: "userId",
