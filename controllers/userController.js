@@ -41,51 +41,55 @@ const controller = {
       });
     }
 
-    db.User.findOne({
-      where: {
-        email: req.body.email,
-      },
-    }).then((userExists) => {
-      if (userExists) {
-        return res.render("register", {
-          title: "Register",
-          errors: "Este email ya está registrado",
-        });
-      }
+    usuarios
+      .findOne({where: {email: req.body.email}})
+      .then((userExists) => {
+        if (userExists) {
+          return res.render("register", {
+            title: "Register",
+            errors: "Este email ya está registrado",
+          });
+        }
 
-      if (req.body.password !== req.body.confirmPassword) {
-        return res.render("register", {
-          title: "Register",
-          errors: "Las contraseñas no coinciden",
-        });
-      }
+        if (req.body.password !== req.body.confirmPassword) {
+          return res.render("register", {
+            title: "Register",
+            errors: "Las contraseñas no coinciden",
+          });
+        }
 
-      const hashedPassword = bcrypt.hashSync(req.body.password, 10);
+        const hashedPassword = bcrypt.hashSync(req.body.password, 10);
 
-      db.User.create({
-        email: req.body.email,
-        username: req.body.username,
-        profilePicture: req.body.profilePicture,
-        birthdate: req.body.birthdate,
-        birthplace: req.body.birthplace,
-        password: hashedPassword,
-      })
-        .then(() => {
-          return res.redirect("/users/login");
-        })
-        .catch((error) => console.error(error));
+        usuarios
+          .create({
+            email: req.body.email,
+            username: req.body.username,
+            profilePicture: req.body.profilePicture,
+            birthdate: req.body.birthdate,
+            birthcity: req.body.birthcity,
+            password: hashedPassword,
+          })
+          .then(() => {
+            return res.redirect("/users/login");
+          })
+          .catch((error) => {
+            return res.render("error");
+          });
+    })
+    .catch((error) => {
+      return res.render("error");
     });
   },
   getLogin: (req, res) => {
     if (req.session.user) {
       return res.redirect(`/users/profile/${req.session.user.id}`);
+    } else {
+      return res.render("login", { title: "Login", errors: null });
     }
-    res.render("login", { title: "Login", errors: null });
   },
   login: (req, res) => {
-    db.User.findOne({
-      where: { email: req.body.email },
-    })
+    usuarios
+      .findOne({where: { email: req.body.email }})
       .then((user) => {
         if (user) {
           if (!bcrypt.compareSync(req.body.password, user.password))
@@ -93,8 +97,8 @@ const controller = {
               title: "Login",
               errors: "La contraseña ingresada es incorrecta",
             });
+          
           let profilePic = user.profilePicture;
-
           if (!profilePic) {
             profilePic = "fallback.png";
           }
@@ -113,20 +117,23 @@ const controller = {
           }
 
           return res.redirect("/index");
+        } else {
+          return res.render("login", {
+            title: "Login",
+            errors: "El usuario es incorrecto",
+          });
         }
-
-        return res.render("login", {
-          title: "Login",
-          errors: "El usuario es incorrecto",
-        });
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        return res.render("error");
+      });
   },
   logout: (req, res) => {
     req.session.destroy();
     res.clearCookie("recordame");
-    res.redirect("/users/login");
+    return res.redirect("/users/login");
   },
 };
 
 module.exports = controller;
+
