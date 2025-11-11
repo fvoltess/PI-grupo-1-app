@@ -12,33 +12,18 @@ const controller = {
       .findByPk(req.params.id, { include: [{ association: "products" }] })
       .then((usuario) => {
         if (usuario) {
-          console.log(usuario);
-          // res.send(usuario);
           return res.render("profile", {
             title: "Profile",
             usuario: usuario,
           });
+        } else {
+          return res.render("error", { error: "Usuario no encontrado" });
         }
       });
-    // productos
-    //   .findAll({ where: { userId: req.params.id } })
-    //   .then((productos) => {
-    //     if (productos.length === 0) {
-    //       return res.render("profile", {
-    //         title: "Profile",
-    //         productosUsuario: null,
-    //       });
-    //     }
-    //     return res.render("profile", {
-    //       title: "Profile",
-    //       productosUsuario: productos,
-    //     });
-    //   })
-    //   .catch((error) => console.log(error));
   },
   getRegister: (req, res) => {
     if (req.session.user) {
-      return res.redirect("/users/profile");
+      return res.redirect(`/users/profile/${req.session.user.id}`);
     }
     res.render("register", { title: "Register", errors: null });
   },
@@ -82,12 +67,12 @@ const controller = {
         .then(() => {
           return res.redirect("/users/login");
         })
-        .catch((error) => console.log(error));
+        .catch((error) => console.error(error));
     });
   },
   getLogin: (req, res) => {
     if (req.session.user) {
-      return res.redirect("/users/profile");
+      return res.redirect(`/users/profile/${req.session.user.id}`);
     }
     res.render("login", { title: "Login", errors: null });
   },
@@ -119,7 +104,6 @@ const controller = {
             res.cookie("recordame", req.session.user, {
               maxAge: 10 * 60 * 60 * 1000,
             });
-            console.log("Cookie creada:", res.cookie);
           }
 
           return res.redirect("/index");
