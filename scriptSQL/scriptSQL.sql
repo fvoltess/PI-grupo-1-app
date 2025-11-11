@@ -10,7 +10,7 @@ CREATE TABLE users (
     username VARCHAR(100) NOT NULL,
     email VARCHAR(250) NOT NULL,
     birthdate DATE NOT NULL,
-    birthcity VARCHAR(250) NOT NULL,
+    birthplace VARCHAR(250) NOT NULL,
     password VARCHAR(200) NOT NULL,
     profilePicture VARCHAR(250),
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -51,7 +51,7 @@ CREATE TABLE comments (
 
 -- insert: users
 
-INSERT INTO users (id, username, email, password, profilePicture, birthdate, birthcity) VALUES
+INSERT INTO users (id, username, email, password, profilePicture, birthdate, birthplace) VALUES
 (1, "fvoltes", "fede@gmail.com", "pass123", "fede.jpg", "2005-08-05", "Buenos Aires"),
 (2, "mpoitevin", "mili@gmail.com", "pass456", "mili.png", "2005-02-4", "Buenos Aires"),
 (3, "bgorchs", "bauti@gmail.com", "pass789", "bauti.jpeg", "2004-01-01", "Buenos Aires"),

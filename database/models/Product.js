@@ -34,13 +34,13 @@ module.exports = (sequelize, DataTypes) => {
     Product.belongsTo(models.User, {
       as: "user",
       foreignKey: "userId",
-      timestamps: false,
+      timestamps: true,
     });
 
     Product.hasMany(models.Comment, {
       as: "comments",
       foreignKey: "productId",
-      timestamps: false,
+      timestamps: true,
     });
   };
 

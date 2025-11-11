@@ -11,6 +11,9 @@ const controller = {
       })
       .then((productos) => {
         res.render("index", { title: "Express", products: productos });
+      })
+      .catch((error) => {
+        return res.render("error", { error: error });
       });
   },
 };

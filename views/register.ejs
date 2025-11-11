@@ -23,7 +23,9 @@
       <div class="row">
         <div class="col-12 headers-container">
           <h2 class="products-title">Registrate</h2>
-          <p class="products-subtitle">¡Accede a todas las funcionalidades de Mordisco!</p>
+          <p class="products-subtitle">
+            ¡Accede a todas las funcionalidades de Mordisco!
+          </p>
         </div>
         <div class="form-container">
           <form action="/users/register" method="POST" class="auth-form">
@@ -60,11 +62,11 @@
               class="input-form"
               required
             />
-            <label for="birthcity">Ciudad de nacimiento</label>
+            <label for="birthplace">Ciudad de nacimiento</label>
             <input
               type="text"
-              id="birthcity"
-              name="birthcity"
+              id="birthplace"
+              name="birthplace"
               placeholder="Buenos Aires"
               class="input-form"
               required
@@ -88,9 +90,9 @@
               required
             />
             <% if (errors) { %>
-              <div class="error-messages">
-                <p>⚠️ <%= errors %> ⚠️</p>
-              </div>
+            <div class="error-messages">
+              <p>⚠️ <%= errors %> ⚠️</p>
+            </div>
             <% } %>
             <input type="submit" value="Registrarse" id="submit-btn" />
           </form>

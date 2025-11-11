@@ -19,30 +19,15 @@ const controller = {
       })
       .then((resultado) => {
         if (resultado) {
-          const commentsUsers = [];
-
-          for (let i = 0; i < resultado.comments.length; i++) {
-            users
-              .findByPk(resultado.comments[i].userId)
-              .then((result) => {
-                commentsUsers.push(result.dataValues);
-              })
-              .catch((error) => {
-                res.send("error");
-              });
-          }
-          //return res.send(resultado)
           return res.render("product", {
             product: resultado,
-            commentsUsers: commentsUsers,
           });
         } else {
-          return res.render("error");
+          return res.render("error", { error: "Producto no encontrado" });
         }
       })
       .catch((error) => {
-        console.error(error);
-        //return res.render("error");
+        return res.render("error", { error: error });
       });
   },
   getAddProduct: (req, res) => {
@@ -52,6 +37,9 @@ const controller = {
     res.render("product-add", { title: "Add Product" });
   },
   addProduct: (req, res) => {
+    if (!req.session.user) {
+      return res.redirect("/users/login");
+    }
     products
       .create({
         image: req.body.imagen,
@@ -76,8 +64,6 @@ const controller = {
     if (!req.session.user) {
       return res.redirect("/users/login");
     }
-    console.log("🔍 Usuario en sesión:", req.session.user);
-    console.log("🔍 userId que voy a guardar:", req.session.user.id);
 
     comments
       .create({
@@ -91,8 +77,6 @@ const controller = {
       .catch((error) => {
         res.render("error", { error: error });
       });
-
-    // res.render("product-edit", { title: "Edit Product" });
   },
   searchProduct: (req, res) => {
     products
@@ -101,16 +85,13 @@ const controller = {
         include: [{ association: "comments" }, { association: "user" }],
       })
       .then((productos) => {
-        //return res.send(productos)
-
         res.render("search-results", {
           productos: productos,
           search: req.query.search,
         });
       })
       .catch((error) => {
-        return res.send("error");
-        //res.render("error")
+        return res.render("error", { error: error });
       });
   },
 };

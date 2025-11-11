@@ -61,7 +61,7 @@ const controller = {
         username: req.body.username,
         profilePicture: req.body.profilePicture,
         birthdate: req.body.birthdate,
-        birthcity: req.body.birthcity,
+        birthplace: req.body.birthplace,
         password: hashedPassword,
       })
         .then(() => {
