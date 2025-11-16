@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link width="" rel="shortcut icon" href="/images/favicon2.png" />
-    <title>Mordisco</title>
+    <title>Mordisco - Resultados de Búsqueda</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/stylesheets/app.css" />
   </head>
 
-  <body>
+  <body class="search-body">
     <%- include("./partials/header") %>
 
     <div class="container products-wrapper">
@@ -23,12 +23,12 @@
         <% if (productos.length == 0) { %>
         <div class="col-12">
           <h2 class="products-title">
-            No se encuentran resultados para: "<%= search %>".
+            No se encuentran resultados para: <%= search %>
           </h2>
         </div>
         <% } else { %>
         <div class="col-12">
-          <h2 class="products-title">Resultados de búsqueda</h2>
+          <h2 class="products-title">Resultados de búsqueda: <%= search %></h2>
         </div>
 
         <% for(let i = 0; i < productos.length; i++) { %>

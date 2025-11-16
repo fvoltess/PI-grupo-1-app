@@ -18,7 +18,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     userId: {
       type: DataTypes.INTEGER.UNSIGNED,
-      references: { model: "user", key: "id" },
+      // este users hace referencia al tablename de config en User.js
+      references: { model: "users", key: "id" },
     },
   };
 
@@ -34,13 +35,11 @@ module.exports = (sequelize, DataTypes) => {
     Product.belongsTo(models.User, {
       as: "user",
       foreignKey: "userId",
-      timestamps: true,
     });
 
     Product.hasMany(models.Comment, {
       as: "comments",
       foreignKey: "productId",
-      timestamps: true,
     });
   };
 

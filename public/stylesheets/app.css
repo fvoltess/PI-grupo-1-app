@@ -79,7 +79,9 @@ hr {
   margin-top: 20px;
   text-align: center;
 }
-
+/* body.search-body .main-footer {
+  margin-top: 40vh;
+} */
 .search-form {
   position: relative;
   display: flex;
@@ -299,6 +301,10 @@ hr {
   margin: 0;
   color: var(--gray);
   padding: 15px 0;
+}
+
+.no-products-found {
+  margin-top: 40vh;
 }
 
 /*

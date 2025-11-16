@@ -1,7 +1,6 @@
 const db = require("../database/models");
 const bcrypt = require("bcryptjs");
 const usuarios = db.User;
-const productos = db.Product;
 
 const controller = {
   profile: (req, res) => {
@@ -15,7 +14,6 @@ const controller = {
       .then((usuario) => {
         if (usuario) {
           return res.render("profile", {
-            title: "Profile",
             usuario: usuario,
           });
         } else {
@@ -30,14 +28,18 @@ const controller = {
     if (req.session.user) {
       return res.redirect(`/users/profile/${req.session.user.id}`);
     } else {
-      return res.render("register", { title: "Register", errors: null });
+      return res.render("register", { errors: null });
     }
   },
   register: (req, res) => {
     if (req.body.password.length < 3) {
       return res.render("register", {
-        title: "Register",
         errors: "La contraseña debe tener al menos 3 caracteres",
+      });
+    }
+    if (req.body.password !== req.body.confirmPassword) {
+      return res.render("register", {
+        errors: "Las contraseñas no coinciden",
       });
     }
 
@@ -46,15 +48,7 @@ const controller = {
       .then((userExists) => {
         if (userExists) {
           return res.render("register", {
-            title: "Register",
             errors: "Este email ya está registrado",
-          });
-        }
-
-        if (req.body.password !== req.body.confirmPassword) {
-          return res.render("register", {
-            title: "Register",
-            errors: "Las contraseñas no coinciden",
           });
         }
 
@@ -73,18 +67,18 @@ const controller = {
             return res.redirect("/users/login");
           })
           .catch((error) => {
-            return res.render("error");
+            return res.render("error", { error: error });
           });
       })
       .catch((error) => {
-        return res.render("error");
+        return res.render("error", { error: error });
       });
   },
   getLogin: (req, res) => {
     if (req.session.user) {
       return res.redirect(`/users/profile/${req.session.user.id}`);
     } else {
-      return res.render("login", { title: "Login", errors: null });
+      return res.render("login", { errors: null });
     }
   },
   login: (req, res) => {
@@ -92,9 +86,12 @@ const controller = {
       .findOne({ where: { email: req.body.email } })
       .then((user) => {
         if (user) {
-          if (!bcrypt.compareSync(req.body.password, user.password))
+          let passwordMatch = bcrypt.compareSync(
+            req.body.password,
+            user.password
+          );
+          if (!passwordMatch)
             return res.render("login", {
-              title: "Login",
               errors: "La contraseña ingresada es incorrecta",
             });
 
@@ -119,13 +116,12 @@ const controller = {
           return res.redirect("/index");
         } else {
           return res.render("login", {
-            title: "Login",
             errors: "El usuario es incorrecto",
           });
         }
       })
       .catch((error) => {
-        return res.render("error");
+        return res.render("error", { error: error });
       });
   },
   logout: (req, res) => {

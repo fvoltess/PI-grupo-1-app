@@ -41,13 +41,11 @@ module.exports = (sequelize, DataTypes) => {
     Comment.belongsTo(models.User, {
       as: "user",
       foreignKey: "userId",
-      timestamps: true,
     });
 
     Comment.belongsTo(models.Product, {
       as: "product",
       foreignKey: "productId",
-      timestamps: true,
     });
   };
 

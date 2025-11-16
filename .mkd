@@ -1,0 +1,75 @@
+# Notas errores y cuestiones a prestar atencion
+
+1. En asociaciones, por ejemplo Products, el timestamps no va
+
+```js
+Product.associate = (models) => {
+  Product.belongsTo(models.User, {
+    as: "user",
+    foreignKey: "userId",
+    timestamps: true,
+  });
+};
+```
+
+2. En references {model: "users"}
+
+```js
+userId: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      references: { model: "users", key: "id" },
+    }
+```
+
+2. el "users" hace referencia no al alias creado en el modelo, sino al { tableName: "users" }
+
+```js
+const config = {
+  tableName: "users",
+  timestamps: true,
+  underscored: false,
+};
+```
+
+3. Entender el funcionamiento de "id"
+
+```js
+products
+  // escribir id es igual que poner {id: id}
+  .findByPk(id, {
+    include: [
+      {
+        association: "comments",
+        // este user es el alias definido en Product.js dentro de la asociación Comment
+        include: [{ association: "user" }],
+      },
+      { association: "user" },
+    ],
+  });
+```
+
+4. No falta un else?
+
+```js
+getAddProduct: (req, res) => {
+  if (!req.session.user) {
+    return res.redirect("/users/login");
+  }
+  return res.render("product-add");
+  // si se cumple la primera condicion el metodo devuelve res.redirect("/users/login")
+  // en caso contrario no entrara al if y sigue al return res.render("product-add")
+};
+```
+
+[!important] ENTENDER: que poner un else es lo mismo que no ponerlo por que de todas formas si se cumple el primero, el segundo nunca se alcanzara y viceversa
+
+5. Aprenderse un par de estos: [op.like]
+
+6. Cual es la diferencia entre estas dos rutas?
+
+```js
+router.get("/", indexController.index);
+router.get("/index", indexController.index);
+```
+
+7. Un metodo es una propiedad con una funcion. Cuando hacemos userController.register por ejemplo, register es una funcion, pero que en el controller esta declarada como un metodo
